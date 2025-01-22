@@ -87,32 +87,127 @@ from cspbase import *
 import itertools
 
 
-def all_diff_tuples(domain, length):
-    """
-    Generate all tuples of length 'length' from 'domain' where all values are distinct.
-    """
-    return list(itertools.permutations(domain, length))
-
-def distinct_pair_tuples(domain):
-    """
-    Generate all 2-value tuples (v1, v2) with v1 != v2 in 'domain'.
-    """
-    tuples = []
-    for v1 in domain:
-        for v2 in domain:
-            if v1 != v2:
-                tuples.append((v1, v2))
-    return tuples
-
 def binary_ne_grid(cagey_grid):
     ##IMPLEMENT
-    pass
+    n, cages = cagey_grid  # 'cages' not used in this function
+    csp = CSP("BinaryNEGrid")
+
+    # Step 1: Create Variables
+    var_array = []
+    for row in range(n):
+        for col in range(n):
+            var_name = f"Cell({row+1},{col+1})"
+            var = Variable(var_name, list(range(1, n + 1)))  # Domain [1..n]
+            csp.add_var(var) 
+            var_array.append(var)
+
+    # Step 2: Add Binary Not-Equal Constraints
+    for row in range(n):
+        for col1 in range(n):
+            for col2 in range(col1 + 1, n):
+                v1 = var_array[row * n + col1]
+                v2 = var_array[row * n + col2]
+                con = Constraint(f"Row({row},{col1},{col2})", [v1, v2])
+                con.add_satisfying_tuples([(x, y) for x in v1.domain() for y in v2.domain() if x != y])
+                csp.add_constraint(con)
+
+    for col in range(n):
+        for row1 in range(n):
+            for row2 in range(row1 + 1, n):
+                v1 = var_array[row1 * n + col]
+                v2 = var_array[row2 * n + col]
+                con = Constraint(f"Col({col},{row1},{row2})", [v1, v2])
+                con.add_satisfying_tuples([(x, y) for x in v1.domain() for y in v2.domain() if x != y])
+                csp.add_constraint(con)
+
+    return csp, var_array
+
 
 
 def nary_ad_grid(cagey_grid):
     ## IMPLEMENT
-    pass
+    n, cages = cagey_grid  # 'cages' not used in this function
+    csp = CSP("NaryAllDiffGrid")
+
+    # Step 1: Create Variables
+    var_array = []
+    for row in range(n):
+        for col in range(n):
+            var_name = f"Cell({row+1},{col+1})"
+            var = Variable(var_name, list(range(1, n + 1)))  # Domain [1..n]
+            csp.add_var(var)
+            var_array.append(var)
+
+    # Step 2: Add N-ary All-Different Constraints
+    for row in range(n):
+        row_vars = [var_array[row * n + col] for col in range(n)]
+        con = Constraint(f"RowAllDiff({row})", row_vars)
+        con.add_satisfying_tuples(list(itertools.permutations(range(1, n + 1), n)))
+        csp.add_constraint(con)
+
+    for col in range(n):
+        col_vars = [var_array[row * n + col] for row in range(n)]
+        con = Constraint(f"ColAllDiff({col})", col_vars)
+        con.add_satisfying_tuples(list(itertools.permutations(range(1, n + 1), n)))
+        csp.add_constraint(con)
+
+    return csp, var_array
 
 def cagey_csp_model(cagey_grid):
     ##IMPLEMENT
-    pass
+    n, cage_list = cagey_grid
+    csp = CSP("CageyCSP")
+    
+    # Step 1: Create Variables
+    var_array = []
+    for row in range(n):
+        for col in range(n):
+            var_name = f"Cell({row+1},{col+1})"
+            var = Variable(var_name, list(range(1, n + 1)))
+            csp.add_var(var)
+            var_array.append(var)
+
+    # Step 2: Add N-ary All-Different Constraints (Row & Column)
+    for row in range(n):
+        row_vars = [var_array[row * n + col] for col in range(n)]
+        con = Constraint(f"RowAllDiff({row})", row_vars)
+        con.add_satisfying_tuples(list(itertools.permutations(range(1, n + 1), n)))
+        csp.add_constraint(con)
+
+    for col in range(n):
+        col_vars = [var_array[row * n + col] for row in range(n)]
+        con = Constraint(f"ColAllDiff({col})", col_vars)
+        con.add_satisfying_tuples(list(itertools.permutations(range(1, n + 1), n)))
+        csp.add_constraint(con)
+
+    # Step 3: Add Cage Constraints
+    for idx, (target, cells, op) in enumerate(cage_list):
+        cage_vars = [var_array[(r-1) * n + (c-1)] for (r, c) in cells]
+        con = Constraint(f"Cage({idx})", cage_vars)
+
+        # Generate satisfying tuples for the cage constraint
+        satisfying_tuples = []
+        for values in itertools.permutations(range(1, n + 1), len(cells)):
+            if op == '+':
+                if sum(values) == target:
+                    satisfying_tuples.append(values)
+            elif op == '-':
+                if any(abs(x - y) == target for x, y in itertools.permutations(values, 2)):
+                    satisfying_tuples.append(values)
+            elif op == '*':
+                if eval('*'.join(map(str, values))) == target:
+                    satisfying_tuples.append(values)
+            elif op == '/':
+                if any(x // y == target and x % y == 0 for x, y in itertools.permutations(values, 2)):
+                    satisfying_tuples.append(values)
+            elif op == '?':  # Unknown operator, accept any valid one
+                if sum(values) == target or \
+                   any(abs(x - y) == target for x, y in itertools.permutations(values, 2)) or \
+                   eval('*'.join(map(str, values))) == target or \
+                   any(x // y == target and x % y == 0 for x, y in itertools.permutations(values, 2)):
+                    satisfying_tuples.append(values)
+
+        con.add_satisfying_tuples(satisfying_tuples)
+        csp.add_constraint(con)
+
+    return csp, var_array
