@@ -356,29 +356,32 @@ def cagey_csp_model(cagey_grid):
 
     for target, cells, operation in cages:
         cage_vars = [variable_array[(r-1) * n + (c-1)] for (r, c) in cells]
-        constraint = Constraint(f'Cage-{target}', cage_vars)
-        possible_values = list(range(1, n+1))
+        cage_op_var = Variable(f"Cage_op({target}:{operation}:{cage_vars})", ['+', '-', '*', '/', 'f'])
+        cage_vars.insert(0, cage_op_var)
         
+        constraint = Constraint(f'Cage({target}:{operation}:{cage_vars})', cage_vars)
+        
+        possible_values = list(range(1, n+1))
         def valid_tuples(target, values, op):
             valid = []
             if op == '+':
-                valid = [tup for tup in itertools.permutations(values, len(cage_vars)) if sum(tup) == target]
+                valid = [('+',) + tup for tup in itertools.permutations(values, len(cage_vars) - 1) if sum(tup) == target]
             elif op == '-':
-                for tup in itertools.permutations(values, len(cage_vars)):
+                for tup in itertools.permutations(values, len(cage_vars) - 1):
                     diff = tup[0]
                     for num in tup[1:]:
                         diff -= num
                     if diff == target:
-                        valid.append(tup)
+                        valid.append(('-',) + tup)
             elif op == '*':
-                for tup in itertools.permutations(values, len(cage_vars)):
+                for tup in itertools.permutations(values, len(cage_vars) - 1):
                     product = 1
                     for num in tup:
                         product *= num
                     if product == target:
-                        valid.append(tup)
+                        valid.append(('*',) + tup)
             elif op == '/':
-                for tup in itertools.permutations(values, len(cage_vars)):
+                for tup in itertools.permutations(values, len(cage_vars) - 1):
                     sorted_tup = sorted(tup, reverse=True)
                     div_result = sorted_tup[0]
                     valid_div = True
@@ -388,7 +391,7 @@ def cagey_csp_model(cagey_grid):
                             break
                         div_result //= num
                     if valid_div and div_result == target:
-                        valid.append(tup)
+                        valid.append(('/',) + tup)
             return valid
 
         if operation == '?':
@@ -402,7 +405,6 @@ def cagey_csp_model(cagey_grid):
         csp.add_constraint(constraint)
     
     return csp, variable_array
-
 
 
 
