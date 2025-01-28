@@ -89,49 +89,6 @@ import itertools
 
 def binary_ne_grid(cagey_grid):
     ##IMPLEMENT
-    # n, cage = cagey_grid # n is the number of elements in row and col , cage is the cage but not needed for this function since it will be about cage contraints
-    # variable_array = [] # creating variables to passes it to the CSP object 
-    # name = "binary_grid"
-
-    # for row in range(n*n):
-    #     var_name = f"cell {row//n},{row%n}"
-    #     domain = list(range(1,n+1))
-    #     var = Variable(var_name, domain)
-    #     variable_array.append(var)
-
-    # csp = CSP(name,variable_array) # passes variables in creating CSP object
-
-    # sat_tuple = [[x, y] for (x, y) in itertools.product(domain, repeat=2) if x != y] # All legal tuples
-
-    # for row in range(n):
-    #     for col in range(n-1):
-    #         var1 = variable_array[row * n + col]
-    #         var2 = variable_array[row * n + col + 1]
-
-    #         contraint1 = Constraint(f'C({row},{col})->({row},{col+1})', [var1, var2])
-    #         contraint2 = Constraint(f'C({row},{col+1})->({row},{col})', [var2, var1])
-
-    #         contraint1.add_satisfying_tuples(sat_tuple)
-    #         contraint2.add_satisfying_tuples(sat_tuple)
-
-    #         csp.add_constraint(contraint1)
-    #         csp.add_constraint(contraint2)
-
-    # for col in range(n):
-    #     for row in range(n-1):
-    #         var1 = variable_array[row * n + col]
-    #         var2 = variable_array[row * (n + 1) + col]
-
-    #         contraint1 = Constraint(f'C({row},{col})->({row+1},{col})', [var1, var2])
-    #         contraint2 = Constraint(f'C({row+1},{col})->({row},{col})', [var2, var1])
-
-    #         contraint1.add_satisfying_tuples(sat_tuple)
-    #         contraint2.add_satisfying_tuples(sat_tuple)
-
-    #         csp.add_constraint(contraint1)
-    #         csp.add_constraint(contraint2)
-
-    # return csp
     n, _ = cagey_grid
     variable_array = []
     name = "binary_grid"
@@ -169,36 +126,6 @@ def binary_ne_grid(cagey_grid):
 
 def nary_ad_grid(cagey_grid):
     ## IMPLEMENT
-
-    # n, cage = cagey_grid # n is the number of elements in row and col , cage is the cage but not needed for this function since it will be about cage contraints
-    # variable_array = [] # creating variables to passes it to the CSP object 
-    # name = "nary_Grid"
-
-    # for row in range(n*n):
-    #     var_name = f"cell {row//n},{row%n}"
-    #     domain = list(range(1,n+1))
-    #     var = Variable(var_name, domain)
-    #     variable_array.append(var)
-
-    # csp = CSP(name,variable_array) # passes variables in creating CSP object
-
-    # sat_tuple = list(itertools.permutations(domain))
-
-    # for row in range(n):
-    #     var_row = [variable_array[row * n + col] for col in range(n)]
-
-    #     contraint1 = Constraint(f'C({var_row}', var_row)
-    #     contraint1.add_satisfying_tuples(sat_tuple)
-    #     csp.add_constraint(contraint1)
-
-    # for col in range(n):
-    #     var_col = [variable_array[row * n + col] for row in range(n)]
-    #     contraint1 = Constraint(f'C({var_col}', var_col)
-    #     contraint1.add_satisfying_tuples(sat_tuple)
-    #     csp.add_constraint(contraint1)
-
-    # return csp
-
     n, _ = cagey_grid
     variable_array = []
     name = "nary_grid"
@@ -231,181 +158,148 @@ def nary_ad_grid(cagey_grid):
 ## Cagery. For 
 
 def cagey_csp_model(cagey_grid):
-    ##IMPLEMENT
+    """
+    Builds a CSP model with:
+      (1) n-ary all-different constraints for each row and column,
+      (2) cage constraints for each cage, with multi-cell operations
+          applied left-to-right in the order of each permutation.
 
-    # n, cage = cagey_grid # n is the number of elements in row and col , cage is the cage but not needed for this function since it will be about cage contraints
-    # variable_array = [] # creating variables to passes it to the CSP object 
-    # name = "cagey_csp"
+    cagey_grid: (n, cages)
+      - n: puzzle dimension
+      - cages: list of tuples (target, list_of_cell_coords, operation)
+         e.g. (6, [(1,1),(1,2),(1,3)], '+')
 
-    # for row in range(n*n):
-    #     var_name = f"cell {row//n},{row%n}"
-    #     domain = list(range(1,n+1))
-    #     var = Variable(var_name, domain)
-    #     variable_array.append(var)
-
-    # csp = CSP(name,variable_array) # passes variables in creating CSP object
-
-    # sat_tuple = list(itertools.permutations(domain))
-
-    # for row in range(n):
-    #     var_row = [variable_array[row * n + col] for col in range(n)]
-
-    #     contraint1 = Constraint(f'C({var_row}', var_row)
-    #     contraint1.add_satisfying_tuples(sat_tuple)
-    #     csp.add_constraint(contraint1)
-
-    # for col in range(n):
-    #     var_col = [variable_array[row * n + col] for row in range(n)]
-    #     contraint1 = Constraint(f'C({var_col}', var_col)
-    #     contraint1.add_satisfying_tuples(sat_tuple)
-    #     csp.add_constraint(contraint1)
-
-        
-
-    # # Cage Constraints - 
-    # for target, cell, operation in cage:
-    #     cage_var = [variable_array[(r*n) + c] for (r,c) in cell]
-    #     contraint1 = Constraint(f"cell{row},{col}",cage_var)
-    #     contraint1.add_satisfying_tuples(statisfy_tuple_cagy)
-    #     csp.add_constraint(contraint1)
-
-
-    #     statisfy_tuple_cagy = []
-
-
-    # def subtract_statify_tuple_founder(tuple):
-
-    #     # for subset_len in range(2, len(values)+1):
-    #     for subset in itertools.permutations(values,len(values)):
-    #         diff_result = subset[0]
-    #         for num in subset[1:]:
-    #             diff_result -= num
-    #         if diff_result == target:
-    #             # statisfy_tuple_cagy.append( itertools.permutations(tuple(subset)))
-    #             statisfy_tuple_cagy.append(subset)
-
-    # def product_statify_tuple_founder(tuple):
-    #     # for subset_len in range(2, len(values),+1):
-    #     for subset in itertools.permutations(values, len(values)):
-    #         product_result = 1
-    #         for num in subset:
-    #             product_result *= num
-    #         if product_result == target:
-    #             statisfy_tuple_cagy.append(subset)   
-
-    # def divide_statify_tuple_founder(tuple):
-    #     for subset in itertools.permutations(values, len(values)):
-    #         sorted_list_from_tuple = sorted(subset, reverse=True)
-    #         div_result = sorted_list_from_tuple[0]
-    #         valid_division = True
-    #         for num in sorted_list_from_tuple[1:]:
-    #             if num == 0 :
-    #                 valid_division == False
-    #                 break
-    #             div_result /= num
-    #         if valid_division and div_result == target:
-    #             statisfy_tuple_cagy.append(subset)
-
-    # for values in itertools.permutations(range(0,n+1), len(cell)):
-    #     if operation == "+":
-    #         if sum(values) == target:
-    #             statisfy_tuple_cagy.append(values)
-    #     elif operation == '-':
-    #         subtract_statify_tuple_founder(values)
-    #     elif operation == '*':
-    #         product_statify_tuple_founder(values)          
-    #     elif operation == '/':
-    #         divide_statify_tuple_founder(values)
-    #     elif operation == '?':  
-    #         if sum(values) == target:
-    #             statisfy_tuple_cagy.append(values)
-
-    #         subtract_statify_tuple_founder(values)
-            
-    #         product_statify_tuple_founder(values)
-
-    #         divide_statify_tuple_founder(values)
-
-    # return csp
-
+    Returns: (csp, var_array)
+    """
     n, cages = cagey_grid
-    variable_array = []
-    name = "cagey_csp"
 
-    for row in range(n):
-        for col in range(n):
-            var_name = f"cell {row+1},{col+1}"
+    # -------------------------------------------------------
+    # 1) Create variables for each cell
+    #    We'll name them "Var-Cell(r,c)" with domain [1..n].
+    # -------------------------------------------------------
+    var_array = []
+    for r in range(n):
+        for c in range(n):
+            name = f"Var-Cell({r+1},{c+1})"
             domain = list(range(1, n+1))
-            var = Variable(var_name, domain)
-            variable_array.append(var)
+            var = Variable(name, domain)
+            var_array.append(var)
 
-    csp = CSP(name, variable_array)
-    sat_tuples = list(itertools.permutations(range(1, n+1)))
+    # Create the CSP
+    csp = CSP("CageyCSP", var_array)
 
-    for row in range(n):
-        row_vars = [variable_array[row * n + col] for col in range(n)]
-        constraint = Constraint(f'Row-{row+1}', row_vars)
-        constraint.add_satisfying_tuples(sat_tuples)
-        csp.add_constraint(constraint)
+    # -------------------------------------------------------
+    # 2) Row & Column Constraints (n-ary all-different)
+    # -------------------------------------------------------
+    # For each row, one all-different constraint
+    import itertools
 
-    for col in range(n):
-        col_vars = [variable_array[row * n + col] for row in range(n)]
-        constraint = Constraint(f'Col-{col+1}', col_vars)
-        constraint.add_satisfying_tuples(sat_tuples)
-        csp.add_constraint(constraint)
+    for r in range(n):
+        row_vars = [var_array[r*n + col] for col in range(n)]
+        con = Constraint(f"Row{r+1}-AllDiff", row_vars)
 
-    for target, cells, operation in cages:
-        cage_vars = [variable_array[(r-1) * n + (c-1)] for (r, c) in cells]
-        cage_op_var = Variable(f"Cage_op({target}:{operation}:{cage_vars})", ['+', '-', '*', '/', 'f'])
-        cage_vars.insert(0, cage_op_var)
-        
-        constraint = Constraint(f'Cage({target}:{operation}:{cage_vars})', cage_vars)
-        
-        possible_values = list(range(1, n+1))
-        def valid_tuples(target, values, op):
-            valid = []
-            if op == '+':
-                valid = [('+',) + tup for tup in itertools.permutations(values, len(cage_vars) - 1) if sum(tup) == target]
-            elif op == '-':
-                for tup in itertools.permutations(values, len(cage_vars) - 1):
-                    diff = tup[0]
-                    for num in tup[1:]:
-                        diff -= num
-                    if diff == target:
-                        valid.append(('-',) + tup)
-            elif op == '*':
-                for tup in itertools.permutations(values, len(cage_vars) - 1):
-                    product = 1
-                    for num in tup:
-                        product *= num
-                    if product == target:
-                        valid.append(('*',) + tup)
-            elif op == '/':
-                for tup in itertools.permutations(values, len(cage_vars) - 1):
-                    sorted_tup = sorted(tup, reverse=True)
-                    div_result = sorted_tup[0]
-                    valid_div = True
-                    for num in sorted_tup[1:]:
-                        if num == 0 or div_result % num != 0:
-                            valid_div = False
-                            break
-                        div_result //= num
-                    if valid_div and div_result == target:
-                        valid.append(('/',) + tup)
-            return valid
+        # Generate all assignments of length n from domain [1..n],
+        # only keep those with distinct values.
+        sat_tuples = []
+        for assignment in itertools.product(range(1, n+1), repeat=n):
+            if len(set(assignment)) == n:
+                sat_tuples.append(assignment)
 
-        if operation == '?':
-            all_tuples = []
-            for op in ['+', '-', '*', '/']:
-                all_tuples.extend(valid_tuples(target, possible_values, op))
+        con.add_satisfying_tuples(sat_tuples)
+        csp.add_constraint(con)
+
+    # For each column, one all-different constraint
+    for c in range(n):
+        col_vars = [var_array[r*n + c] for r in range(n)]
+        con = Constraint(f"Col{c+1}-AllDiff", col_vars)
+
+        sat_tuples = []
+        for assignment in itertools.product(range(1, n+1), repeat=n):
+            if len(set(assignment)) == n:
+                sat_tuples.append(assignment)
+
+        con.add_satisfying_tuples(sat_tuples)
+        csp.add_constraint(con)
+
+    # -------------------------------------------------------
+    # 3) Cage Constraints
+    #    Multi-cell logic for +, -, *, / applied left-to-right
+    # -------------------------------------------------------
+    for (target, cell_coords, op) in cages:
+        # The puzzle variables for the cage cells
+        cage_vars = []
+        for (rr, cc) in cell_coords:
+            # Our variables are named "Var-Cell(r,c)"
+            name = f"Var-Cell({rr},{cc})"
+            for v in var_array:
+                if v.name == name:
+                    cage_vars.append(v)
+                    break
+
+        # Create an operator variable if op can be '?'
+        if op == '?':
+            op_var = Variable(
+                f"Cage_op({target}:{op}:[{', '.join(x.name for x in cage_vars)}])",
+                ['+', '-', '*', '/']
+            )
         else:
-            all_tuples = valid_tuples(target, possible_values, operation)
-        
-        constraint.add_satisfying_tuples(all_tuples)
-        csp.add_constraint(constraint)
-    
-    return csp, variable_array
+            op_var = Variable(
+                f"Cage_op({target}:{op}:[{', '.join(x.name for x in cage_vars)}])",
+                [op]
+            )
 
+        var_array.append(op_var)
+        csp.add_var(op_var)
 
+        # Build a constraint with scope = [op_var] + cage_vars
+        scope = [op_var] + cage_vars
+        cage_con_name = f"Cage({target}:{op}:[{', '.join(x.name for x in scope)}])"
+        cage_con = Constraint(cage_con_name, scope)
 
+        all_valid = []
+        domain_vals = list(range(1, n+1))
+        # print(domain_vals)
+        cage_size = len(cage_vars)
 
+        # Determine which operators to try
+        ops_to_try = ['+', '-', '*', '/'] if op == '?' else [op]
+
+        # For each possible operator, for each permutation of domain_vals:
+        for operator_choice in ops_to_try:
+            # permutations of the domain, length = cage_size
+            for combo in itertools.permutations(domain_vals, cage_size):
+                # print(combo)
+                # Apply operator_choice left-to-right:
+                res = combo[0]
+                valid_combo = True
+
+                for x in combo[1:]:
+                    if operator_choice == '+':
+                        res += x
+                    elif operator_choice == '-':
+                        res -= x
+                    elif operator_choice == '*':
+                        res *= x
+                    elif operator_choice == '/':
+                        # Use integer division, "no fraction" => remainder=0
+                        if x == 0 or (res % x != 0):
+                            valid_combo = False
+                            break
+                        res //= x
+                    else:
+                        valid_combo = False
+                        break
+
+                    # If still valid, continue; else break
+
+                if valid_combo and res == target:
+                    # The constraint expects (op, val1, val2, ...)
+                    new_tuple = (operator_choice,) + combo
+                    all_valid.append(new_tuple)
+
+        print(all_valid)
+        # Add these satisfying tuples to the cage constraint
+        cage_con.add_satisfying_tuples(all_valid)
+        csp.add_constraint(cage_con)
+
+    return csp, var_array
