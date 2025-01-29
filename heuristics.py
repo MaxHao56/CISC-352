@@ -1,13 +1,10 @@
 # =============================
-# Student Names:
-# Group ID:
-# Date:
+# Student Names: Ben Kwan, Kanice Leung, Max Hao
+# Group ID: (A1) 20
+# Date: Jan. 30, 2025
 # =============================
-# CISC 352 - W23
+# CISC 352 - W25
 # heuristics.py
-# desc:
-#
-
 
 #Look for #IMPLEMENT tags in this file. These tags indicate what has
 #to be implemented to complete problem solution.
@@ -39,22 +36,6 @@ var_ordering == a function with the following template
 def ord_dh(csp):
     ''' return next Variable to be assigned according to the Degree Heuristic '''
     # IMPLEMENT
-    
-    # unassign_var = csp.get_all_unasgn_var()
-    
-    # if not unassign_var:
-    #     return None
-    
-    # vari_highest = ""
-    # count = 0
-    # for each_var in unassign_var:
-    #     len_var = len(csp.get_con_with_var(each_var))
-    #     if len_var > count :
-    #         count = len_var
-    #         vari_highest = each_var
-            
-    
-    # return vari_highest
 
     unassigned_vars = csp.get_all_unasgn_vars()
     if not unassigned_vars:
@@ -70,31 +51,12 @@ def ord_dh(csp):
     # Return the variable with the maximum "refined degree" count
     return max(unassigned_vars, key=count_other_unassigned_constraints)
 
-
 def ord_mrv(csp):
     ''' return Variable to be assigned according to the Minimum Remaining Values heuristic '''
     # IMPLEMENT
 
-
-    # unassign_var = csp.get_all_unasgn_var()
-    
-    # if not unassign_var:
-    #     return None
-    
-    # count = 99999999
-    # var_low = ""
-
-    # for each_value in unassign_var:
-    #     len_var = each_value.cur_domain_size()
-    #     if len_var < count:
-    #         count  = len_var
-    #         var_low = each_value
-
-
-    # return var_low
     unassigned_vars = csp.get_all_unasgn_vars()
     if not unassigned_vars:
         return None
 
     return min(unassigned_vars, key=lambda var: var.cur_domain_size())
-

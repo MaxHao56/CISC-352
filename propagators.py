@@ -1,13 +1,10 @@
 # =============================
-# Student Names:
-# Group ID:
-# Date:
+# Student Names: Ben Kwan, Kanice Leung, Max Hao
+# Group ID: (A1) 20
+# Date: Jan. 30, 2025
 # =============================
-# CISC 352 - W23
+# CISC 352 - W25
 # propagators.py
-# desc:
-#
-
 
 #Look for #IMPLEMENT tags in this file. These tags indicate what has
 #to be implemented to complete problem solution.
@@ -82,7 +79,8 @@
 
 def prop_BT(csp, newVar=None):
     '''Do plain backtracking propagation. That is, do no
-    propagation at all. Just check fully instantiated constraints'''  
+    propagation at all. Just check fully instantiated constraints'''
+
     if not newVar:
         return True, []
     for c in csp.get_cons_with_var(newVar):
@@ -94,7 +92,6 @@ def prop_BT(csp, newVar=None):
             if not c.check_tuple(vals):
                 return False, []
     return True, []
-
 
 def prop_FC(csp, newVar=None):
     '''Do forward checking. That is check constraints with
@@ -119,14 +116,12 @@ def prop_FC(csp, newVar=None):
 
     return True, pruned
 
-
-
-
 def prop_GAC(csp, newVar=None):
     '''Do GAC propagation. If newVar is None we do initial GAC enforce
        processing all constraints. Otherwise we do GAC enforce with
        constraints containing newVar on GAC Queue'''
     #IMPLEMENT
+
     pruned = []
     constraints = csp.get_all_cons() if newVar is None else csp.get_cons_with_var(newVar)
     gac_queue = list(constraints)

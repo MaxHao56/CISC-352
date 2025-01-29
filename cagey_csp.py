@@ -1,12 +1,10 @@
 # =============================
-# Student Names:
-# Group ID:
-# Date:
+# Student Names: Ben Kwan, Kanice Leung, Max Hao
+# Group ID: (A1) 20
+# Date: Jan. 30, 2025
 # =============================
-# CISC 352 - W23
+# CISC 352 - W25
 # cagey_csp.py
-# desc:
-#
 
 #Look for #IMPLEMENT tags in this file.
 '''
@@ -86,28 +84,27 @@ An example of a 3x3 puzzle would be defined as:
 from cspbase import *
 import itertools
 
-
 def binary_ne_grid(cagey_grid):
     ##IMPLEMENT
     n, _ = cagey_grid
-    variable_array = []
-    name = "binary_grid"
+    var_array = []
+    csp_name = "binary_grid"
+    domain = list(range(1, n+1))
 
     for row in range(n):
         for col in range(n):
-            var_name = f"cell {row+1},{col+1}"
-            domain = list(range(1, n+1))
+            var_name = f"Cell ({row+1},{col+1})"
             var = Variable(var_name, domain)
-            variable_array.append(var)
+            var_array.append(var)
 
-    csp = CSP(name, variable_array)
+    csp = CSP(csp_name, var_array)
     sat_tuples = [(x, y) for x in range(1, n+1) for y in range(1, n+1) if x != y]
 
     for row in range(n):
         for col1 in range(n):
             for col2 in range(col1+1, n):
-                var1 = variable_array[row * n + col1]
-                var2 = variable_array[row * n + col2]
+                var1 = var_array[row * n + col1]
+                var2 = var_array[row * n + col2]
                 constraint = Constraint(f'Row-{row+1}-{col1+1}-{col2+1}', [var1, var2])
                 constraint.add_satisfying_tuples(sat_tuples)
                 csp.add_constraint(constraint)
@@ -115,47 +112,43 @@ def binary_ne_grid(cagey_grid):
     for col in range(n):
         for row1 in range(n):
             for row2 in range(row1+1, n):
-                var1 = variable_array[row1 * n + col]
-                var2 = variable_array[row2 * n + col]
+                var1 = var_array[row1 * n + col]
+                var2 = var_array[row2 * n + col]
                 constraint = Constraint(f'Col-{col+1}-{row1+1}-{row2+1}', [var1, var2])
                 constraint.add_satisfying_tuples(sat_tuples)
                 csp.add_constraint(constraint)
 
-    return csp, variable_array
-    
+    return csp, var_array
 
 def nary_ad_grid(cagey_grid):
     ## IMPLEMENT
     n, _ = cagey_grid
-    variable_array = []
-    name = "nary_grid"
+    var_array = []
+    csp_name = "nary_grid"
+    domain = list(range(1, n+1))
 
     for row in range(n):
         for col in range(n):
-            var_name = f"cell {row+1},{col+1}"
-            domain = list(range(1, n+1))
+            var_name = f"Cell ({row+1},{col+1})"
             var = Variable(var_name, domain)
-            variable_array.append(var)
+            var_array.append(var)
 
-    csp = CSP(name, variable_array)
+    csp = CSP(csp_name, var_array)
     sat_tuples = list(itertools.permutations(range(1, n+1)))
 
     for row in range(n):
-        row_vars = [variable_array[row * n + col] for col in range(n)]
+        row_vars = [var_array[row * n + col] for col in range(n)]
         constraint = Constraint(f'Row-{row+1}', row_vars)
         constraint.add_satisfying_tuples(sat_tuples)
         csp.add_constraint(constraint)
 
     for col in range(n):
-        col_vars = [variable_array[row * n + col] for row in range(n)]
+        col_vars = [var_array[row * n + col] for row in range(n)]
         constraint = Constraint(f'Col-{col+1}', col_vars)
         constraint.add_satisfying_tuples(sat_tuples)
         csp.add_constraint(constraint)
 
-    return csp, variable_array
-
-
-## Cagery. For 
+    return csp, var_array
 
 def cagey_csp_model(cagey_grid):
     """
@@ -173,6 +166,8 @@ def cagey_csp_model(cagey_grid):
       - var_array: The list of all Variables (cell vars + operator vars)
     """
     n, cages = cagey_grid
+    csp_name = "CageyCSP_OnlyCages"
+    domain = list(range(1, n+1))
 
     # -------------------------------------------------------
     # 1) Create Variables for each cell
@@ -182,12 +177,11 @@ def cagey_csp_model(cagey_grid):
         for c in range(n):
             # Each cell has domain [1..n]
             var_name = f"Var-Cell({r+1},{c+1})"
-            domain = list(range(1, n+1))
             cell_var = Variable(var_name, domain)
             var_array.append(cell_var)
 
     # Create the CSP
-    csp = CSP("CageyCSP_OnlyCages", var_array)
+    csp = CSP(csp_name, var_array)
 
     # -------------------------------------------------------
     # 2) For each cage, create an operator variable + cage constraint
@@ -231,7 +225,7 @@ def cagey_csp_model(cagey_grid):
         # ---------------------------------------------------
         # 3) Build Satisfying Tuples
         # ---------------------------------------------------
-        satisfying_tuples = []
+        sat_tuples = []
         cage_size = len(cage_vars)
 
         # For each possible op in op_domain, check all combos
@@ -240,7 +234,7 @@ def cagey_csp_model(cagey_grid):
                 for combo in itertools.product(range(1, n+1), repeat=cage_size):
                     if sum(combo) == target:
                         tup = (op_choice,) + combo
-                        satisfying_tuples.append(tup)
+                        sat_tuples.append(tup)
             elif op_choice == '*':
                 for combo in itertools.product(range(1, n+1), repeat=cage_size):
                     product_val = 1
@@ -248,14 +242,14 @@ def cagey_csp_model(cagey_grid):
                         product_val *= val
                     if product_val == target:
                         tup = (op_choice,) + combo
-                        satisfying_tuples.append(tup)
+                        sat_tuples.append(tup)
             else:
                 # For '-', '/', or '?' cages, implement logic as needed.
                 pass
 
         # Optionally filter each tuple to ensure they fit each variable's domain
         final_tuples = []
-        for t in satisfying_tuples:
+        for t in sat_tuples:
             operator_val = t[0]
             cell_vals = t[1:]
             # Check operator is in domain
@@ -269,5 +263,3 @@ def cagey_csp_model(cagey_grid):
         csp.add_constraint(cage_con)
 
     return csp, var_array
-
-
