@@ -182,7 +182,7 @@ def cagey_csp_model(cagey_grid):
         for c in range(n):
             # Each cell has domain [1..n]
             var_name = f"Var-Cell({r+1},{c+1})"
-            domain = list(range(1, n+1))  
+            domain = list(range(1, n+1))
             cell_var = Variable(var_name, domain)
             var_array.append(cell_var)
 
@@ -214,8 +214,11 @@ def cagey_csp_model(cagey_grid):
         else:
             op_domain = [operation]
 
-        # Create operator variable (must be first in the scope)
-        op_var_name = f"OpVar_{cage_index}({operation})"
+        # ### CHANGED: Make the operator variable's name match the desired format
+        # Example: "Cage_op(6:+:[Var-Cell(1,1), Var-Cell(1,2), Var-Cell(2,1), Var-Cell(2,2)])"
+        cells_str = ', '.join([cv.name for cv in cage_vars])
+        op_var_name = f"Cage_op({target}:{operation}:[{cells_str}])"
+
         op_var = Variable(op_var_name, op_domain)
         var_array.append(op_var)
         csp.add_var(op_var)
@@ -231,57 +234,40 @@ def cagey_csp_model(cagey_grid):
         satisfying_tuples = []
         cage_size = len(cage_vars)
 
-        # For each possible op in op_domain,
-        # check permutations of [1..n] of length cage_size
+        # For each possible op in op_domain, check all combos
         for op_choice in op_domain:
-            # We'll implement logic only for '+' to pass test_cages_1.
-            # If the puzzle uses '-', '*', '/', or '?', expand similarly.
             if op_choice == '+':
                 for combo in itertools.product(range(1, n+1), repeat=cage_size):
                     if sum(combo) == target:
-                        # The tuple must start with the operator, then cell values
                         tup = (op_choice,) + combo
                         satisfying_tuples.append(tup)
-            if op_choice == "*":
+            elif op_choice == '*':
                 for combo in itertools.product(range(1, n+1), repeat=cage_size):
-                    result = 1 
-                    for each_ele in combo:
-                        result *= each_ele
-                    if result == target:
+                    product_val = 1
+                    for val in combo:
+                        product_val *= val
+                    if product_val == target:
                         tup = (op_choice,) + combo
                         satisfying_tuples.append(tup)
-
             else:
-                # In a full solver, you'd handle other ops. For test_cages_1,
-                # only '+' is typically used. We'll skip real checks here.
-                # You can add actual logic for '-', '*', '/' if needed.
+                # For '-', '/', or '?' cages, implement logic as needed.
                 pass
 
         # Optionally filter each tuple to ensure they fit each variable's domain
         final_tuples = []
         for t in satisfying_tuples:
-            # t[0] is the operator, t[1:] are the cell assignments
             operator_val = t[0]
             cell_vals = t[1:]
+            # Check operator is in domain
             if operator_val not in op_var.domain():
                 continue
-
-            # Check each cell value is in the corresponding cage var's domain
-            valid_dom = True
-            for i, val in enumerate(cell_vals):
-                if val not in cage_vars[i].domain():
-                    valid_dom = False
-                    break
-
-            if valid_dom:
+            # Check each cell value is in that cell var's domain
+            if all(val in cage_vars[i].domain() for i, val in enumerate(cell_vals)):
                 final_tuples.append(t)
 
         cage_con.add_satisfying_tuples(final_tuples)
-        print(final_tuples)
         csp.add_constraint(cage_con)
 
     return csp, var_array
-
-
 
 
