@@ -3,11 +3,11 @@ test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
+test_cage_existence (__main__.TestCageConstraints) ... FAIL
+test_cages_1 (__main__.TestCageConstraints) ... ok
 test_cages_2 (__main__.TestCageConstraints) ... ok
 test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
+test_cages_4 (__main__.TestCageConstraints) ... ok
 test_cages_5 (__main__.TestCageConstraints) ... ok
 test_cages_6 (__main__.TestCageConstraints) ... ok
 test_dh_1 (__main__.TestDH) ... ok
@@ -44,17 +44,9 @@ test_prop_GAC_8 (__main__.TestPropGAC) ... ok
 test_prop_GAC_9 (__main__.TestPropGAC) ... ok
 
 ======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
+FAIL: test_cage_existence (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
+AssertionError: False is not true : failed to find cage variable
 
 ======================================================================
 FAIL: test_cages_3 (__main__.TestCageConstraints)
@@ -69,347 +61,48 @@ Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
 Encoded incorrect constraint:
  {}
 
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
+Ran 44 tests in 1.145s
 
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.148s
-
-FAILED (failures=3)
+FAILED (failures=2)
 ----------------------------------------------------------------------
 Time spent:
 
 test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0010s
+test_bne_grid_2: 0.0000s
 test_bne_grid_3: 0.0000s
-test_bne_grid_4: 0.0030s
-test_bne_grid_5: 0.0055s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0010s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0010s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0155s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.1981s
-test_prop_fc_2: 0.3791s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3816s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0021s
-test_prop_GAC_2: 0.0012s
-test_prop_GAC_3: 0.0020s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0066s
-test_prop_GAC_6: 0.0220s
-test_prop_GAC_7: 0.0064s
-test_prop_GAC_8: 0.0433s
-test_prop_GAC_9: 0.0683s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:28:22
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.151s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0015s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0075s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0010s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0010s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0210s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0000s
-test_bin_prop_fc_3: 0.0015s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.2050s
-test_prop_fc_2: 0.3679s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3768s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0020s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0045s
-test_prop_GAC_6: 0.0207s
-test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0452s
-test_prop_GAC_9: 0.0752s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:30:38
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.160s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0010s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0021s
-test_bne_grid_5: 0.0050s
+test_bne_grid_4: 0.0025s
+test_bne_grid_5: 0.0060s
 test_cages_1: 0.0000s
 test_cages_2: 0.0000s
 test_cages_3: 0.0000s
 test_cages_4: 0.0000s
 test_cages_5: 0.0000s
-test_cages_6: 0.0010s
+test_cages_6: 0.0000s
 test_nary_grid_1: 0.0000s
 test_nary_grid_2: 0.0000s
 test_nary_grid_3: 0.0025s
-test_nary_grid_4: 0.0165s
-test_bin_prop_fc_0: 0.0010s
+test_nary_grid_4: 0.0170s
+test_bin_prop_fc_0: 0.0000s
 test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0012s
+test_bin_prop_fc_2: 0.0010s
 test_bin_prop_fc_3: 0.0010s
 test_bin_prop_fc_4: 0.0010s
 test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.2017s
-test_prop_fc_2: 0.3880s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3826s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0020s
-test_prop_GAC_2: 0.0015s
+test_prop_fc_1: 0.2007s
+test_prop_fc_2: 0.3800s
+test_prop_fc_3: 0.0010s
+test_prop_fc_4: 0.3782s
+test_prop_GAC_0: 0.0010s
+test_prop_GAC_1: 0.0010s
+test_prop_GAC_2: 0.0020s
 test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0010s
+test_prop_GAC_4: 0.0025s
 test_prop_GAC_5: 0.0050s
-test_prop_GAC_6: 0.0227s
+test_prop_GAC_6: 0.0210s
 test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0443s
-test_prop_GAC_9: 0.0676s
+test_prop_GAC_8: 0.0430s
+test_prop_GAC_9: 0.0652s
 ----------------------------------------------------------------------
 Grades:
 
@@ -424,7 +117,7 @@ CAGEY: 0.3125/0.5
 TOTAL: 2.5625/2.75
 Code quality: ?/0.25
 
-Running time: 2025_01_27-23:33:07
+Running time: 2025_01_28-21:57:05
 
 ===========================================
 test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
@@ -432,11 +125,11 @@ test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
+test_cage_existence (__main__.TestCageConstraints) ... FAIL
+test_cages_1 (__main__.TestCageConstraints) ... ok
 test_cages_2 (__main__.TestCageConstraints) ... ok
 test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
+test_cages_4 (__main__.TestCageConstraints) ... ok
 test_cages_5 (__main__.TestCageConstraints) ... ok
 test_cages_6 (__main__.TestCageConstraints) ... ok
 test_dh_1 (__main__.TestDH) ... ok
@@ -473,17 +166,9 @@ test_prop_GAC_8 (__main__.TestPropGAC) ... ok
 test_prop_GAC_9 (__main__.TestPropGAC) ... ok
 
 ======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
+FAIL: test_cage_existence (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
+AssertionError: False is not true : failed to find cage variable
 
 ======================================================================
 FAIL: test_cages_3 (__main__.TestCageConstraints)
@@ -498,689 +183,47 @@ Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
 Encoded incorrect constraint:
  {}
 
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
+Ran 44 tests in 1.128s
 
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.130s
-
-FAILED (failures=3)
+FAILED (failures=2)
 ----------------------------------------------------------------------
 Time spent:
 
 test_bne_grid_1: 0.0000s
 test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
+test_bne_grid_3: 0.0000s
 test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0060s
+test_bne_grid_5: 0.0055s
 test_cages_1: 0.0000s
-test_cages_2: 0.0010s
+test_cages_2: 0.0000s
 test_cages_3: 0.0000s
-test_cages_4: 0.0000s
+test_cages_4: 0.0020s
 test_cages_5: 0.0000s
 test_cages_6: 0.0000s
 test_nary_grid_1: 0.0000s
 test_nary_grid_2: 0.0010s
 test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0176s
+test_nary_grid_4: 0.0170s
 test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0012s
+test_bin_prop_fc_1: 0.0020s
+test_bin_prop_fc_2: 0.0010s
 test_bin_prop_fc_3: 0.0010s
 test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.1989s
-test_prop_fc_2: 0.3742s
+test_prop_fc_0: 0.0012s
+test_prop_fc_1: 0.1962s
+test_prop_fc_2: 0.3692s
 test_prop_fc_3: 0.0010s
 test_prop_fc_4: 0.3702s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0015s
-test_prop_GAC_2: 0.0010s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0020s
-test_prop_GAC_5: 0.0053s
-test_prop_GAC_6: 0.0210s
-test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0428s
-test_prop_GAC_9: 0.0651s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:33:33
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ERROR
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... FAIL
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... FAIL
-test_cages_6 (__main__.TestCageConstraints) ... FAIL
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-ERROR: test_cage_existence (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\autograder_stu.py", line 616, in test_cage_existence
-    csp, var_array = cagey_csp_model(board)
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\cagey_csp.py", line 298, in cagey_csp_model
-    print(vals)
-UnboundLocalError: local variable 'vals' referenced before assignment
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-======================================================================
-FAIL: test_cages_2 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '-')])
-
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-======================================================================
-FAIL: test_cages_5 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(7, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '-')])
-
-
-======================================================================
-FAIL: test_cages_6 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '*')])
-
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.119s
-
-FAILED (failures=6, errors=1)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0050s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0158s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.1977s
-test_prop_fc_2: 0.3698s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3669s
 test_prop_GAC_0: 0.0010s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0055s
-test_prop_GAC_6: 0.0215s
-test_prop_GAC_7: 0.0045s
-test_prop_GAC_8: 0.0421s
-test_prop_GAC_9: 0.0658s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.0/0.5
-
-TOTAL: 2.25/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:37:58
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.179s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0060s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0010s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0169s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.2081s
-test_prop_fc_2: 0.3925s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3798s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0052s
-test_prop_GAC_6: 0.0250s
-test_prop_GAC_7: 0.0045s
-test_prop_GAC_8: 0.0452s
-test_prop_GAC_9: 0.0740s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:38:21
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ERROR
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... FAIL
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... FAIL
-test_cages_6 (__main__.TestCageConstraints) ... FAIL
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-ERROR: test_cage_existence (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\autograder_stu.py", line 616, in test_cage_existence
-    csp, var_array = cagey_csp_model(board)
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\cagey_csp.py", line 298, in cagey_csp_model
-    print(vals)
-UnboundLocalError: local variable 'vals' referenced before assignment
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-======================================================================
-FAIL: test_cages_2 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '-')])
-
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-======================================================================
-FAIL: test_cages_5 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(7, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '-')])
-
-
-======================================================================
-FAIL: test_cages_6 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '*')])
-
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.152s
-
-FAILED (failures=6, errors=1)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0010s
-test_bne_grid_3: 0.0000s
-test_bne_grid_4: 0.0030s
-test_bne_grid_5: 0.0065s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0198s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0015s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.2037s
-test_prop_fc_2: 0.3778s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3747s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0010s
+test_prop_GAC_1: 0.0000s
 test_prop_GAC_2: 0.0010s
 test_prop_GAC_3: 0.0020s
-test_prop_GAC_4: 0.0015s
-test_prop_GAC_5: 0.0060s
-test_prop_GAC_6: 0.0221s
-test_prop_GAC_7: 0.0051s
-test_prop_GAC_8: 0.0424s
-test_prop_GAC_9: 0.0667s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.0/0.5
-
-TOTAL: 2.25/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:39:18
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ERROR
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... FAIL
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... FAIL
-test_cages_6 (__main__.TestCageConstraints) ... FAIL
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-ERROR: test_cage_existence (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\autograder_stu.py", line 616, in test_cage_existence
-    csp, var_array = cagey_csp_model(board)
-  File "c:\Users\unabn\Documents\GitHub\CISC-352\cagey_csp.py", line 298, in cagey_csp_model
-    print(vals)
-UnboundLocalError: local variable 'vals' referenced before assignment
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-======================================================================
-FAIL: test_cages_2 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '-')])
-
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-======================================================================
-FAIL: test_cages_5 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(7, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '-')])
-
-
-======================================================================
-FAIL: test_cages_6 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Student code threw exception "local variable 'vals' referenced before assignment". Failed to construct board!
-(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '*')])
-
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.135s
-
-FAILED (failures=6, errors=1)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0015s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0055s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0160s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0000s
-test_bin_prop_fc_4: 0.0015s
-test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.2020s
-test_prop_fc_2: 0.3743s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3759s
-test_prop_GAC_0: 0.0010s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0015s
-test_prop_GAC_5: 0.0050s
-test_prop_GAC_6: 0.0214s
-test_prop_GAC_7: 0.0053s
-test_prop_GAC_8: 0.0411s
+test_prop_GAC_4: 0.0010s
+test_prop_GAC_5: 0.0040s
+test_prop_GAC_6: 0.0220s
+test_prop_GAC_7: 0.0040s
+test_prop_GAC_8: 0.0450s
 test_prop_GAC_9: 0.0655s
 ----------------------------------------------------------------------
 Grades:
@@ -1191,155 +234,12 @@ MRV: 0.25/0.25
 DH: 0.25/0.25
 BINARY: 0.25/0.25
 NARY: 0.25/0.25
-CAGEY: 0.0/0.5
-
-TOTAL: 2.25/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:39:28
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.134s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0055s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0000s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0166s
-test_bin_prop_fc_0: 0.0010s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0011s
-test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.1991s
-test_prop_fc_2: 0.3712s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3784s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0023s
-test_prop_GAC_2: 0.0010s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0041s
-test_prop_GAC_6: 0.0216s
-test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0426s
-test_prop_GAC_9: 0.0657s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
 CAGEY: 0.3125/0.5
 
 TOTAL: 2.5625/2.75
 Code quality: ?/0.25
 
-Running time: 2025_01_27-23:41:01
+Running time: 2025_01_28-22:01:29
 
 ===========================================
 test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
@@ -1347,7 +247,7 @@ test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
+test_cage_existence (__main__.TestCageConstraints) ... ERROR
 test_cages_1 (__main__.TestCageConstraints) ... FAIL
 test_cages_2 (__main__.TestCageConstraints) ... ok
 test_cages_3 (__main__.TestCageConstraints) ... FAIL
@@ -1388,17 +288,23 @@ test_prop_GAC_8 (__main__.TestPropGAC) ... ok
 test_prop_GAC_9 (__main__.TestPropGAC) ... ok
 
 ======================================================================
+ERROR: test_cage_existence (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\unabn\Documents\GitHub\CISC-352\autograder_stu.py", line 616, in test_cage_existence
+    csp, var_array = cagey_csp_model(board)
+  File "c:\Users\unabn\Documents\GitHub\CISC-352\cagey_csp.py", line 240, in cagey_csp_model
+    for combo in itertools.permutations(range(1, n+1), repeat=cage_size):
+TypeError: 'repeat' is an invalid keyword argument for permutations()
+
+======================================================================
 FAIL: test_cages_1 (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
 AssertionError: False is not true : 
 
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
+Student code threw exception "'repeat' is an invalid keyword argument for permutations()". Failed to construct board!
+(2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
 
-
-Encoded incorrect constraint:
- {}
 
 ======================================================================
 FAIL: test_cages_3 (__main__.TestCageConstraints)
@@ -1418,18 +324,14 @@ FAIL: test_cages_4 (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
 AssertionError: False is not true : 
 
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
+Student code threw exception "'repeat' is an invalid keyword argument for permutations()". Failed to construct board!
+(3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
 
-
-Encoded incorrect constraint:
- {}
 
 ----------------------------------------------------------------------
-Ran 44 tests in 1.145s
+Ran 44 tests in 1.179s
 
-FAILED (failures=3)
+FAILED (failures=3, errors=1)
 ----------------------------------------------------------------------
 Time spent:
 
@@ -1437,466 +339,35 @@ test_bne_grid_1: 0.0000s
 test_bne_grid_2: 0.0000s
 test_bne_grid_3: 0.0010s
 test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0065s
-test_cages_1: 0.0000s
+test_bne_grid_5: 0.0060s
 test_cages_2: 0.0000s
 test_cages_3: 0.0000s
-test_cages_4: 0.0010s
 test_cages_5: 0.0000s
 test_cages_6: 0.0000s
 test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
+test_nary_grid_2: 0.0010s
 test_nary_grid_3: 0.0020s
 test_nary_grid_4: 0.0167s
 test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
+test_bin_prop_fc_1: 0.0008s
 test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
+test_bin_prop_fc_3: 0.0020s
 test_bin_prop_fc_4: 0.0010s
 test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.1994s
-test_prop_fc_2: 0.3735s
+test_prop_fc_1: 0.2086s
+test_prop_fc_2: 0.3908s
 test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3768s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0020s
-test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0045s
-test_prop_GAC_6: 0.0210s
-test_prop_GAC_7: 0.0055s
-test_prop_GAC_8: 0.0486s
-test_prop_GAC_9: 0.0686s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:43:22
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.128s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0022s
-test_bne_grid_5: 0.0060s
-test_cages_1: 0.0000s
-test_cages_2: 0.0010s
-test_cages_3: 0.0000s
-test_cages_4: 0.0000s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0025s
-test_nary_grid_4: 0.0155s
-test_bin_prop_fc_0: 0.0000s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0015s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.1999s
-test_prop_fc_2: 0.3745s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3717s
+test_prop_fc_4: 0.3877s
 test_prop_GAC_0: 0.0010s
 test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0020s
-test_prop_GAC_5: 0.0045s
-test_prop_GAC_6: 0.0210s
-test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0428s
-test_prop_GAC_9: 0.0648s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:45:22
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.151s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0000s
-test_bne_grid_4: 0.0030s
-test_bne_grid_5: 0.0055s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0000s
-test_cages_5: 0.0000s
-test_cages_6: 0.0010s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0000s
-test_nary_grid_3: 0.0010s
-test_nary_grid_4: 0.0175s
-test_bin_prop_fc_0: 0.0010s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0010s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.2006s
-test_prop_fc_2: 0.3807s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3787s
-test_prop_GAC_0: 0.0010s
-test_prop_GAC_1: 0.0010s
-test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0020s
-test_prop_GAC_5: 0.0045s
-test_prop_GAC_6: 0.0250s
-test_prop_GAC_7: 0.0045s
-test_prop_GAC_8: 0.0422s
-test_prop_GAC_9: 0.0658s
-----------------------------------------------------------------------
-Grades:
-
-FC: 0.5/0.5
-GAC: 0.75/0.75
-MRV: 0.25/0.25
-DH: 0.25/0.25
-BINARY: 0.25/0.25
-NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
-
-TOTAL: 2.5625/2.75
-Code quality: ?/0.25
-
-Running time: 2025_01_27-23:46:11
-
-===========================================
-test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
-test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
-test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
-test_cages_5 (__main__.TestCageConstraints) ... ok
-test_cages_6 (__main__.TestCageConstraints) ... ok
-test_dh_1 (__main__.TestDH) ... ok
-test_dh_2 (__main__.TestDH) ... ok
-test_dh_3 (__main__.TestDH) ... ok
-test_dh_4 (__main__.TestDH) ... ok
-test_mrv_1 (__main__.TestMRV) ... ok
-test_mrv_2 (__main__.TestMRV) ... ok
-test_mrv_3 (__main__.TestMRV) ... ok
-test_mrv_4 (__main__.TestMRV) ... ok
-test_nary_grid_1 (__main__.TestNaryGrid) ... ok
-test_nary_grid_2 (__main__.TestNaryGrid) ... ok
-test_nary_grid_3 (__main__.TestNaryGrid) ... ok
-test_nary_grid_4 (__main__.TestNaryGrid) ... ok
-test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
-test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_fc_0 (__main__.TestPropFC) ... ok
-test_prop_fc_1 (__main__.TestPropFC) ... ok
-test_prop_fc_2 (__main__.TestPropFC) ... ok
-test_prop_fc_3 (__main__.TestPropFC) ... ok
-test_prop_fc_4 (__main__.TestPropFC) ... ok
-test_prop_GAC_0 (__main__.TestPropGAC) ... ok
-test_prop_GAC_1 (__main__.TestPropGAC) ... ok
-test_prop_GAC_2 (__main__.TestPropGAC) ... ok
-test_prop_GAC_3 (__main__.TestPropGAC) ... ok
-test_prop_GAC_4 (__main__.TestPropGAC) ... ok
-test_prop_GAC_5 (__main__.TestPropGAC) ... ok
-test_prop_GAC_6 (__main__.TestPropGAC) ... ok
-test_prop_GAC_7 (__main__.TestPropGAC) ... ok
-test_prop_GAC_8 (__main__.TestPropGAC) ... ok
-test_prop_GAC_9 (__main__.TestPropGAC) ... ok
-
-======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-----------------------------------------------------------------------
-Ran 44 tests in 1.140s
-
-FAILED (failures=3)
-----------------------------------------------------------------------
-Time spent:
-
-test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0010s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0060s
-test_cages_1: 0.0000s
-test_cages_2: 0.0000s
-test_cages_3: 0.0000s
-test_cages_4: 0.0010s
-test_cages_5: 0.0000s
-test_cages_6: 0.0000s
-test_nary_grid_1: 0.0000s
-test_nary_grid_2: 0.0012s
-test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0155s
-test_bin_prop_fc_0: 0.0015s
-test_bin_prop_fc_1: 0.0010s
-test_bin_prop_fc_2: 0.0010s
-test_bin_prop_fc_3: 0.0015s
-test_bin_prop_fc_4: 0.0010s
-test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.2003s
-test_prop_fc_2: 0.3789s
-test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3719s
-test_prop_GAC_0: 0.0000s
-test_prop_GAC_1: 0.0020s
 test_prop_GAC_2: 0.0010s
-test_prop_GAC_3: 0.0022s
+test_prop_GAC_3: 0.0010s
 test_prop_GAC_4: 0.0010s
-test_prop_GAC_5: 0.0050s
-test_prop_GAC_6: 0.0210s
-test_prop_GAC_7: 0.0041s
-test_prop_GAC_8: 0.0478s
-test_prop_GAC_9: 0.0646s
+test_prop_GAC_5: 0.0040s
+test_prop_GAC_6: 0.0220s
+test_prop_GAC_7: 0.0042s
+test_prop_GAC_8: 0.0439s
+test_prop_GAC_9: 0.0683s
 ----------------------------------------------------------------------
 Grades:
 
@@ -1906,12 +377,12 @@ MRV: 0.25/0.25
 DH: 0.25/0.25
 BINARY: 0.25/0.25
 NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
+CAGEY: 0.1875/0.5
 
-TOTAL: 2.5625/2.75
+TOTAL: 2.4375/2.75
 Code quality: ?/0.25
 
-Running time: 2025_01_27-23:46:35
+Running time: 2025_01_28-22:07:53
 
 ===========================================
 test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
@@ -1919,11 +390,11 @@ test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
+test_cage_existence (__main__.TestCageConstraints) ... FAIL
+test_cages_1 (__main__.TestCageConstraints) ... ok
 test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
+test_cages_3 (__main__.TestCageConstraints) ... ok
+test_cages_4 (__main__.TestCageConstraints) ... ok
 test_cages_5 (__main__.TestCageConstraints) ... ok
 test_cages_6 (__main__.TestCageConstraints) ... ok
 test_dh_1 (__main__.TestDH) ... ok
@@ -1960,57 +431,23 @@ test_prop_GAC_8 (__main__.TestPropGAC) ... ok
 test_prop_GAC_9 (__main__.TestPropGAC) ... ok
 
 ======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
+FAIL: test_cage_existence (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
+AssertionError: False is not true : failed to find cage variable
 
 ----------------------------------------------------------------------
-Ran 44 tests in 1.141s
+Ran 44 tests in 1.150s
 
-FAILED (failures=3)
+FAILED (failures=1)
 ----------------------------------------------------------------------
 Time spent:
 
 test_bne_grid_1: 0.0000s
-test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0015s
-test_bne_grid_4: 0.0020s
-test_bne_grid_5: 0.0050s
-test_cages_1: 0.0010s
+test_bne_grid_2: 0.0010s
+test_bne_grid_3: 0.0000s
+test_bne_grid_4: 0.0025s
+test_bne_grid_5: 0.0060s
+test_cages_1: 0.0000s
 test_cages_2: 0.0000s
 test_cages_3: 0.0000s
 test_cages_4: 0.0000s
@@ -2019,27 +456,27 @@ test_cages_6: 0.0000s
 test_nary_grid_1: 0.0000s
 test_nary_grid_2: 0.0000s
 test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0155s
+test_nary_grid_4: 0.0190s
 test_bin_prop_fc_0: 0.0000s
 test_bin_prop_fc_1: 0.0010s
 test_bin_prop_fc_2: 0.0010s
 test_bin_prop_fc_3: 0.0010s
 test_bin_prop_fc_4: 0.0010s
 test_prop_fc_0: 0.0010s
-test_prop_fc_1: 0.1998s
-test_prop_fc_2: 0.3792s
+test_prop_fc_1: 0.1980s
+test_prop_fc_2: 0.3841s
 test_prop_fc_3: 0.0010s
-test_prop_fc_4: 0.3765s
-test_prop_GAC_0: 0.0010s
+test_prop_fc_4: 0.3722s
+test_prop_GAC_0: 0.0000s
 test_prop_GAC_1: 0.0010s
 test_prop_GAC_2: 0.0020s
-test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0010s
+test_prop_GAC_3: 0.0020s
+test_prop_GAC_4: 0.0022s
 test_prop_GAC_5: 0.0050s
-test_prop_GAC_6: 0.0217s
-test_prop_GAC_7: 0.0042s
-test_prop_GAC_8: 0.0409s
-test_prop_GAC_9: 0.0651s
+test_prop_GAC_6: 0.0210s
+test_prop_GAC_7: 0.0065s
+test_prop_GAC_8: 0.0439s
+test_prop_GAC_9: 0.0682s
 ----------------------------------------------------------------------
 Grades:
 
@@ -2049,12 +486,12 @@ MRV: 0.25/0.25
 DH: 0.25/0.25
 BINARY: 0.25/0.25
 NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
+CAGEY: 0.375/0.5
 
-TOTAL: 2.5625/2.75
+TOTAL: 2.625/2.75
 Code quality: ?/0.25
 
-Running time: 2025_01_27-23:46:49
+Running time: 2025_01_28-22:11:19
 
 ===========================================
 test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
@@ -2062,11 +499,11 @@ test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
 test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
-test_cage_existence (__main__.TestCageConstraints) ... ok
-test_cages_1 (__main__.TestCageConstraints) ... FAIL
+test_cage_existence (__main__.TestCageConstraints) ... FAIL
+test_cages_1 (__main__.TestCageConstraints) ... ok
 test_cages_2 (__main__.TestCageConstraints) ... ok
-test_cages_3 (__main__.TestCageConstraints) ... FAIL
-test_cages_4 (__main__.TestCageConstraints) ... FAIL
+test_cages_3 (__main__.TestCageConstraints) ... ok
+test_cages_4 (__main__.TestCageConstraints) ... ok
 test_cages_5 (__main__.TestCageConstraints) ... ok
 test_cages_6 (__main__.TestCageConstraints) ... ok
 test_dh_1 (__main__.TestDH) ... ok
@@ -2103,86 +540,52 @@ test_prop_GAC_8 (__main__.TestPropGAC) ... ok
 test_prop_GAC_9 (__main__.TestPropGAC) ... ok
 
 ======================================================================
-FAIL: test_cages_1 (__main__.TestCageConstraints)
+FAIL: test_cage_existence (__main__.TestCageConstraints)
 ----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '+')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_3 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('*', 1, 1, 2, 2): True, ('*', 1, 2, 1, 2): True, ('*', 1, 2, 2, 1): True, ('*', 2, 1, 1, 2): True, ('*', 2, 1, 2, 1): True, ('*', 2, 2, 1, 1): True}
-Input board: (2, [(4, [(1, 1), (1, 2), (2, 1), (2, 2)], '*')])
-
-
-Encoded incorrect constraint:
- {}
-
-======================================================================
-FAIL: test_cages_4 (__main__.TestCageConstraints)
-----------------------------------------------------------------------
-AssertionError: False is not true : 
-
-Failed to encode:
- {('+', 1, 1, 1, 1, 3, 3): True, ('+', 1, 1, 1, 2, 2, 3): True, ('+', 1, 1, 1, 2, 3, 2): True, ('+', 1, 1, 1, 3, 1, 3): True, ('+', 1, 1, 1, 3, 2, 2): True, ('+', 1, 1, 1, 3, 3, 1): True, ('+', 1, 1, 2, 1, 2, 3): True, ('+', 1, 1, 2, 1, 3, 2): True, ('+', 1, 1, 2, 2, 1, 3): True, ('+', 1, 1, 2, 2, 2, 2): True, ('+', 1, 1, 2, 2, 3, 1): True, ('+', 1, 1, 2, 3, 1, 2): True, ('+', 1, 1, 2, 3, 2, 1): True, ('+', 1, 1, 3, 1, 1, 3): True, ('+', 1, 1, 3, 1, 2, 2): True, ('+', 1, 1, 3, 1, 3, 1): True, ('+', 1, 1, 3, 2, 1, 2): True, ('+', 1, 1, 3, 2, 2, 1): True, ('+', 1, 1, 3, 3, 1, 1): True, ('+', 1, 2, 1, 1, 2, 3): True, ('+', 1, 2, 1, 1, 3, 2): True, ('+', 1, 2, 1, 2, 1, 3): True, ('+', 1, 2, 1, 2, 2, 2): True, ('+', 1, 2, 1, 2, 3, 1): True, ('+', 1, 2, 1, 3, 1, 2): True, ('+', 1, 2, 1, 3, 2, 1): True, ('+', 1, 2, 2, 1, 1, 3): True, ('+', 1, 2, 2, 1, 2, 2): True, ('+', 1, 2, 2, 1, 3, 1): True, ('+', 1, 2, 2, 2, 1, 2): True, ('+', 1, 2, 2, 2, 2, 1): True, ('+', 1, 2, 2, 3, 1, 1): True, ('+', 1, 2, 3, 1, 1, 2): True, ('+', 1, 2, 3, 1, 2, 1): True, ('+', 1, 2, 3, 2, 1, 1): True, ('+', 1, 3, 1, 1, 1, 3): True, ('+', 1, 3, 1, 1, 2, 2): True, ('+', 1, 3, 1, 1, 3, 1): True, ('+', 1, 3, 1, 2, 1, 2): True, ('+', 1, 3, 1, 2, 2, 1): True, ('+', 1, 3, 1, 3, 1, 1): True, ('+', 1, 3, 2, 1, 1, 2): True, ('+', 1, 3, 2, 1, 2, 1): True, ('+', 1, 3, 2, 2, 1, 1): True, ('+', 1, 3, 3, 1, 1, 1): True, ('+', 2, 1, 1, 1, 2, 3): True, ('+', 2, 1, 1, 1, 3, 2): True, ('+', 2, 1, 1, 2, 1, 3): True, ('+', 2, 1, 1, 2, 2, 2): True, ('+', 2, 1, 1, 2, 3, 1): True, ('+', 2, 1, 1, 3, 1, 2): True, ('+', 2, 1, 1, 3, 2, 1): True, ('+', 2, 1, 2, 1, 1, 3): True, ('+', 2, 1, 2, 1, 2, 2): True, ('+', 2, 1, 2, 1, 3, 1): True, ('+', 2, 1, 2, 2, 1, 2): True, ('+', 2, 1, 2, 2, 2, 1): True, ('+', 2, 1, 2, 3, 1, 1): True, ('+', 2, 1, 3, 1, 1, 2): True, ('+', 2, 1, 3, 1, 2, 1): True, ('+', 2, 1, 3, 2, 1, 1): True, ('+', 2, 2, 1, 1, 1, 3): True, ('+', 2, 2, 1, 1, 2, 2): True, ('+', 2, 2, 1, 1, 3, 1): True, ('+', 2, 2, 1, 2, 1, 2): True, ('+', 2, 2, 1, 2, 2, 1): True, ('+', 2, 2, 1, 3, 1, 1): True, ('+', 2, 2, 2, 1, 1, 2): True, ('+', 2, 2, 2, 1, 2, 1): True, ('+', 2, 2, 2, 2, 1, 1): True, ('+', 2, 2, 3, 1, 1, 1): True, ('+', 2, 3, 1, 1, 1, 2): True, ('+', 2, 3, 1, 1, 2, 1): True, ('+', 2, 3, 1, 2, 1, 1): True, ('+', 2, 3, 2, 1, 1, 1): True, ('+', 3, 1, 1, 1, 1, 3): True, ('+', 3, 1, 1, 1, 2, 2): True, ('+', 3, 1, 1, 1, 3, 1): True, ('+', 3, 1, 1, 2, 1, 2): True, ('+', 3, 1, 1, 2, 2, 1): True, ('+', 3, 1, 1, 3, 1, 1): True, ('+', 3, 1, 2, 1, 1, 2): True, ('+', 3, 1, 2, 1, 2, 1): True, ('+', 3, 1, 2, 2, 1, 1): True, ('+', 3, 1, 3, 1, 1, 1): True, ('+', 3, 2, 1, 1, 1, 2): True, ('+', 3, 2, 1, 1, 2, 1): True, ('+', 3, 2, 1, 2, 1, 1): True, ('+', 3, 2, 2, 1, 1, 1): True, ('+', 3, 3, 1, 1, 1, 1): True}
-Input board: (3, [(10, [(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)], '+')])
-
-
-Encoded incorrect constraint:
- {}
+AssertionError: False is not true : failed to find cage variable
 
 ----------------------------------------------------------------------
-Ran 44 tests in 1.136s
+Ran 44 tests in 1.134s
 
-FAILED (failures=3)
+FAILED (failures=1)
 ----------------------------------------------------------------------
 Time spent:
 
 test_bne_grid_1: 0.0000s
 test_bne_grid_2: 0.0000s
-test_bne_grid_3: 0.0015s
-test_bne_grid_4: 0.0030s
-test_bne_grid_5: 0.0050s
+test_bne_grid_3: 0.0010s
+test_bne_grid_4: 0.0020s
+test_bne_grid_5: 0.0055s
 test_cages_1: 0.0000s
 test_cages_2: 0.0000s
 test_cages_3: 0.0000s
-test_cages_4: 0.0000s
-test_cages_5: 0.0010s
+test_cages_4: 0.0010s
+test_cages_5: 0.0000s
 test_cages_6: 0.0000s
 test_nary_grid_1: 0.0000s
 test_nary_grid_2: 0.0000s
 test_nary_grid_3: 0.0020s
-test_nary_grid_4: 0.0170s
-test_bin_prop_fc_0: 0.0010s
+test_nary_grid_4: 0.0171s
+test_bin_prop_fc_0: 0.0000s
 test_bin_prop_fc_1: 0.0010s
 test_bin_prop_fc_2: 0.0010s
 test_bin_prop_fc_3: 0.0010s
 test_bin_prop_fc_4: 0.0010s
 test_prop_fc_0: 0.0000s
-test_prop_fc_1: 0.2000s
-test_prop_fc_2: 0.3774s
-test_prop_fc_3: 0.0000s
-test_prop_fc_4: 0.3732s
+test_prop_fc_1: 0.1945s
+test_prop_fc_2: 0.3806s
+test_prop_fc_3: 0.0010s
+test_prop_fc_4: 0.3766s
 test_prop_GAC_0: 0.0010s
-test_prop_GAC_1: 0.0015s
-test_prop_GAC_2: 0.0010s
+test_prop_GAC_1: 0.0010s
+test_prop_GAC_2: 0.0020s
 test_prop_GAC_3: 0.0010s
-test_prop_GAC_4: 0.0020s
-test_prop_GAC_5: 0.0050s
-test_prop_GAC_6: 0.0217s
-test_prop_GAC_7: 0.0050s
-test_prop_GAC_8: 0.0412s
-test_prop_GAC_9: 0.0661s
+test_prop_GAC_4: 0.0000s
+test_prop_GAC_5: 0.0039s
+test_prop_GAC_6: 0.0201s
+test_prop_GAC_7: 0.0040s
+test_prop_GAC_8: 0.0413s
+test_prop_GAC_9: 0.0650s
 ----------------------------------------------------------------------
 Grades:
 
@@ -2192,11 +595,11 @@ MRV: 0.25/0.25
 DH: 0.25/0.25
 BINARY: 0.25/0.25
 NARY: 0.25/0.25
-CAGEY: 0.3125/0.5
+CAGEY: 0.375/0.5
 
-TOTAL: 2.5625/2.75
+TOTAL: 2.625/2.75
 Code quality: ?/0.25
 
-Running time: 2025_01_27-23:47:43
+Running time: 2025_01_28-22:11:26
 
 ===========================================
