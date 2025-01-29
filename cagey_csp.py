@@ -249,6 +249,22 @@ def cagey_csp_model(cagey_grid):
                     if product_val == target:
                         tup = (op_choice,) + combo
                         satisfying_tuples.append(tup)
+            elif op_choice == "-":
+                for combo in itertools.product(range(1, n+1), repeat=cage_size):
+                    result = combo[0]
+                    for val in combo:
+                        result -= val
+                    if result == target:
+                        tup = (op_choice,) + combo
+                        satisfying_tuples.append(tup)
+            elif op_choice == "/":
+                for combo in itertools.product(range(1, n+1), repeat=cage_size):
+                    result = combo[0]
+                    for val in combo:
+                        result /= val
+                    if result == target:
+                        tup = (op_choice,) + combo
+                        satisfying_tuples.append(tup)
             else:
                 # For '-', '/', or '?' cages, implement logic as needed.
                 pass
