@@ -175,7 +175,7 @@ def cagey_csp_model(cagey_grid):
     n, cages = cagey_grid
 
     # -------------------------------------------------------
-    # 1) Create Variables for each cell
+    # 1) Create Variables for each cell and implement row/col constraints
     # -------------------------------------------------------
     var_array = []
     for r in range(n):
@@ -188,6 +188,25 @@ def cagey_csp_model(cagey_grid):
 
     # Create the CSP
     csp = CSP("CageyCSP_OnlyCages", var_array)
+
+
+    # Add column constraints (n-ary all-different)
+    # -------------------------------------------------------
+    sat_tuples = list(itertools.permutations(range(1, n+1)))
+
+    for row in range(n):
+        row_vars = [var_array[row * n + col] for col in range(n)]
+        constraint = Constraint(f'Row-{row+1}', row_vars)
+        csp.add_constraint(constraint)
+        constraint.add_satisfying_tuples(sat_tuples)
+
+
+    for col in range(n):
+        col_vars = [var_array[row * n + col] for row in range(n)]
+        constraint = Constraint(f'Col-{col+1}', col_vars)
+        csp.add_constraint(constraint)
+        constraint.add_satisfying_tuples(sat_tuples)
+        
 
     # -------------------------------------------------------
     # 2) For each cage, create an operator variable + cage constraint
@@ -214,7 +233,7 @@ def cagey_csp_model(cagey_grid):
         else:
             op_domain = [operation]
 
-        # ### CHANGED: Make the operator variable's name match the desired format
+        # Create the operator variable's name match the answer set format
         # Example: "Cage_op(6:+:[Var-Cell(1,1), Var-Cell(1,2), Var-Cell(2,1), Var-Cell(2,2)])"
         cells_str = ', '.join([cv.name for cv in cage_vars])
         op_var_name = f"Cage_op({target}:{operation}:[{cells_str}])"
@@ -265,9 +284,6 @@ def cagey_csp_model(cagey_grid):
                     if result == target:
                         tup = (op_choice,) + combo
                         satisfying_tuples.append(tup)
-            else:
-                # For '-', '/', or '?' cages, implement logic as needed.
-                pass
 
         # Optionally filter each tuple to ensure they fit each variable's domain
         final_tuples = []
