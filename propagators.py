@@ -82,12 +82,13 @@
 
 from cspbase import *
 
-def prop_BT(csp, newVar=None):
+def prop_BT(csp: CSP, newVar=None):
     '''Do plain backtracking propagation. That is, do no
     propagation at all. Just check fully instantiated constraints'''  
     if not newVar:
         return True, []
-    for c in csp.get_cons_with_var(newVar):
+    c : Constraint
+    for c  in csp.get_cons_with_var(newVar):
         if c.get_n_unasgn() == 0:
             vals = []
             vars = c.get_scope()
@@ -98,7 +99,7 @@ def prop_BT(csp, newVar=None):
     return True, []
 
 
-def prop_FC(csp, newVar=None):
+def prop_FC(csp: CSP, newVar=None):
     '''Do forward checking. That is check constraints with
        only one uninstantiated Variable. Remember to keep
        track of all pruned Variable,value pairs and return '''
