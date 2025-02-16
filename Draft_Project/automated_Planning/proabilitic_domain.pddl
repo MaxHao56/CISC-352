@@ -1,8 +1,12 @@
 (define (domain breast-cancer-diagnosis)
-  (:requirements :strips :typing :negative-preconditions :numeric-fluents :conditional-effects :action-costs)
+  (:requirements :strips :typing :negative-preconditions :numeric-fluents )
   
   (:types 
     measurement value
+  )
+
+  (:constants
+    low medium high - value
   )
   
   (:predicates
@@ -14,47 +18,39 @@
   (:functions
     (total-cost)
   )
-  
+
   ;; ==========================
   ;; MEDICAL TESTS (ACTIONS)
   ;; ==========================
   
-;   (:action measure_radius_mean
-;     :precondition (not (test-performed radius_mean))
-;     :effect (and 
-;       (test-performed radius_mean)
-;       (increase (total-cost) 2)
-;       (oneof (has-value radius_mean low)
-;              (has-value radius_mean medium)
-;              (has-value radius_mean high))
-;     ;   (has-value radius_mean low) (has-value radius_mean medium) (has-value radius_mean high)
-;     ; the conversion happens since this doesn't suppport more than one value to it so that I could only have one option instead
-;     )
-;   )
+
 (:action measure_radius_mean_low
-  :precondition (and (not (test-performed radius_mean)))
+  :parameters (?m - measurement)
+  :precondition (and (not (test-performed ?m)))
   :effect (and 
-    (test-performed radius_mean)
+    (test-performed ?m)
     (increase (total-cost) 2)
-    (has-value radius_mean low)
+    (has-value ?m low)
   )
 )
 
 (:action measure_radius_mean_medium
-  :precondition (not (test-performed radius_mean))
+  :parameters (?m - measurement)
+  :precondition (and (not (test-performed ?m)))
   :effect (and 
-    (test-performed radius_mean)
+    (test-performed ?m)
     (increase (total-cost) 2)
-    (has-value radius_mean medium)
+    (has-value ?m medium)
   )
 )
 
 (:action measure_radius_mean_high
-  :precondition (not (test-performed radius_mean))
+  :parameters (?m - measurement)
+  :precondition (and (not (test-performed ?m)))
   :effect (and 
-    (test-performed radius_mean)
+    (test-performed ?m)
     (increase (total-cost) 2)
-    (has-value radius_mean high)
+    (has-value ?m medium)
   )
 )
 
