@@ -22,6 +22,8 @@
     value
 )
 
+
+
 (:constants 
 
     radius_mean
@@ -98,6 +100,31 @@
     (total-cost)
 )
 
+
+; (:action adjust-radius-cost
+;     :parameters ()
+;     :precondition (and 
+;         (test-performed radius_mean)
+;         (test-performed radius_se)
+;         (test-performed radius_worst)
+;     )
+;     :effect (and
+;         ;; Increase cost if radius_worst is high (potential outliers)
+;         (when (has-value radius_worst high)
+;             (increase (total-cost) 2))
+
+;         ;; Increase cost if radius_se is high (unstable mean)
+;         (when (has-value radius_se high)
+;             (increase (total-cost) 5))
+
+;         ;; Reduce cost slightly if radius_mean is stable (low or medium SE)
+;         (when (or (has-value radius_se low) (has-value radius_se medium))
+;             (increase (total-cost) -2))
+;     )
+; )
+
+
+
 (:action radius
     :parameters ()
     :precondition (and 
@@ -111,9 +138,9 @@
         (test-performed radius_se)
         (test-performed radius_worst)
 
-        ; (has-value radius_mean medium) 
-        ; (has-value perimeter_mean medium)
-        ; (has-value texture_mean medium)
+        ; (has-value radius_mean high)
+        ; (has-value radius_se medium)
+        ; (has-value radius_worst low)
 
         (increase (total-cost) 5) 
     )
@@ -138,6 +165,10 @@
     (test-performed area_se)
     (test-performed area_worst)
 
+    ; (has-value area_mean medium)
+    ; (has-value area_se high)
+    ; (has-value area_worst low)
+
     (increase (total-cost) 5)
   
     )
@@ -161,6 +192,11 @@
     (test-performed preimeter_mean)
     (test-performed preimeter_se)
     (test-performed preimeter_worst)
+
+
+    ; (has-value preimeter_mean low)
+    ; (has-value preimeter_se high)
+    ; (has-value preimeter_worst medium)
 
     (increase (total-cost) 5)
     
@@ -191,6 +227,10 @@
     (test-performed compactness_se)
     (test-performed compactness_worst)
 
+    ; (has-value compactness_mean medium)
+    ; (has-value compactness_se low)
+    ; (has-value compactness_worst high)
+
     (increase (total-cost) 5)
   
     )
@@ -220,6 +260,11 @@
     (test-performed fractal_dimension_se)
     (test-performed fractal_dimension_worst)
 
+
+    ; (has-value fractal_dimension_mean high)
+    ; (has-value fractal_dimension_se medium)
+    ; (has-value fractal_dimension_worst low)
+
     (increase (total-cost) 5)
   
     )
@@ -243,6 +288,12 @@
     (test-performed concavity_se)
     (test-performed concavity_worst)
 
+
+    ; (has-value concavity_mean high)
+    ; (has-value concavity_se medium)
+    ; (has-value concavity_worst low)
+
+
     (increase (total-cost) 5)
   
     )
@@ -261,6 +312,11 @@
     (test-performed concave_points_mean)
     (test-performed concave_points_se)
     (test-performed concave_points_worst)
+
+    ; (has-value concave_points_mean low)
+    ; (has-value concave_points_se medium)
+    ; (has-value concave_points_worst high)
+
 
     (increase (total-cost) 5)
   
@@ -281,6 +337,11 @@
     (test-performed texture_se)
     (test-performed texture_worst)
 
+
+    ; (has-value texture_mean high)
+    ; (has-value texture_se low)
+    ; (has-value texture_worst medium)
+
     (increase (total-cost) 5)
   
     )
@@ -299,6 +360,10 @@
     (test-performed symmetry_se)
     (test-performed symmetry_worst)
 
+    ; (has-value symmetry_mean medium)
+    ; (has-value symmetry_se low)
+    ; (has-value symmetry_worst high)
+
     (increase (total-cost) 5)
   
     )
@@ -316,6 +381,10 @@
     (test-performed smoothness_mean)
     (test-performed smoothness_se)
     (test-performed smoothness_worst)
+
+    ; (has-value smoothness_mean medium)
+    ; (has-value smoothness_se high)
+    ; (has-value smoothness_worst low)
 
     (increase (total-cost) 5)
   
@@ -359,7 +428,7 @@
       ;; If we see certain features are low, we say benign
       (when (or (and (has-value radius_mean low)
                      (has-value texture_mean low))
-                (and (has-value perimeter_mean low)
+                (and (has-value preimeter_mean low)
                      (has-value compactness_mean low)))
         (diagnosed benign))
     )
