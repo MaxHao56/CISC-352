@@ -1,11 +1,6 @@
 (define (problem CancerCheck-Instance)
   (:domain CancerCheck)
 
-  ;; Objects in the problem
-  ; (:objects
-  ;   perimeter_mean texture_mean radius_mean compactness_mean - measurement
-  ;   low medium high - value
-  ; )
 
   ;; Initial state
   (:init
@@ -14,12 +9,14 @@
     (not (test-performed texture_mean))
     (not (test-performed radius_mean))
     (not (test-performed compactness_mean))
+    (not (test-performed symmetry_mean))
     
     ;; Assign measurement types
     (typeA radius_mean)
     (typeA texture_mean)
     (typeB perimeter_mean)
     (typeB compactness_mean)
+    (typeB symmetry_mean)
     
     ;; Initial cost
     (= (total-cost) 0)
