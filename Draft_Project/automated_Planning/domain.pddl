@@ -1,174 +1,196 @@
-DOMAIN BreastCancerDiagnosis
+(define (domain CancerCheck_BNN)
+  (:requirements
+    :strips
+    :fluents
+    :conditional-effects
+    :negative-preconditions
+    :typing
+    :equality
+    :action-costs
+    :disjunctive-preconditions
+  )
 
-### STATE SPACE ###
-FEATURES:
-    # Tumor characteristics (observed or unknown)
-    radius_mean: {low, medium, high, unknown}
-    texture_mean: {low, medium, high, unknown}
-    perimeter_mean: {low, medium, high, unknown}
-    area_mean: {low, medium, high, unknown}
-    smoothness_mean: {low, medium, high, unknown}
-    compactness_mean: {low, medium, high, unknown}
-    concavity_mean: {low, medium, high, unknown}
-    concave_points_mean: {low, medium, high, unknown}
-    symmetry_mean: {low, medium, high, unknown}
-    fractal_dimension_mean: {low, medium, high, unknown}
+  (:types 
+    measurement
+    value
+    reaction
+  )
 
-    radius_se: {low, medium, high, unknown}
-    texture_se: {low, medium, high, unknown}
-    perimeter_se: {low, medium, high, unknown}
-    area_se: {low, medium, high, unknown}
-    smoothness_se: {low, medium, high, unknown}
-    compactness_se: {low, medium, high, unknown}
-    concavity_se: {low, medium, high, unknown}
-    concave_points_se: {low, medium, high, unknown}
-    symmetry_se: {low, medium, high, unknown}
-    fractal_dimension_se: {low, medium, high, unknown}
+  (:constants
+    ;; Measurements
+    radius_mean radius_se radius_worst 
+    area_mean area_se area_worst 
+    perimeter_mean perimeter_se perimeter_worst - measurement
 
-    radius_worst: {low, medium, high, unknown}
-    texture_worst: {low, medium, high, unknown}
-    perimeter_worst: {low, medium, high, unknown}
-    area_worst: {low, medium, high, unknown}
-    smoothness_worst: {low, medium, high, unknown}
-    compactness_worst: {low, medium, high, unknown}
-    concavity_worst: {low, medium, high, unknown}
-    concave_points_worst: {low, medium, high, unknown}
-    symmetry_worst: {low, medium, high, unknown}
-    fractal_dimension_worst: {low, medium, high, unknown}
+    ;; Measurement quality values
+    low medium high malignant benign uncertain - value
 
-    # Diagnosis Hypothesis
-    diagnosis: {malignant, benign, unknown}
+    ;; Simulated BNN feedback reactions
+    correct incorrect - reaction
+  )
 
-### INITIAL STATE ###
-INITIAL_STATE:
-    radius_mean = unknown
-    texture_mean = unknown
-    perimeter_mean = unknown
-    area_mean = unknown
-    smoothness_mean = unknown
-    compactness_mean = unknown
-    concavity_mean = unknown
-    concave_points_mean = unknown
-    symmetry_mean = unknown
-    fractal_dimension_mean = unknown
-    radius_se = unknown
-    texture_se = unknown
-    perimeter_se = unknown
-    area_se = unknown
-    smoothness_se = unknown
-    compactness_se = unknown
-    concavity_se = unknown
-    concave_points_se = unknown
-    symmetry_se = unknown
-    fractal_dimension_se = unknown
-    radius_worst = unknown
-    texture_worst = unknown
-    perimeter_worst = unknown
-    area_worst = unknown
-    smoothness_worst = unknown
-    compactness_worst = unknown
-    concavity_worst = unknown
-    concave_points_worst = unknown
-    symmetry_worst = unknown
-    fractal_dimension_worst = unknown
+  (:predicates
+    (has-value ?m - measurement ?v - value)
+    (test-performed ?m - measurement)
+    (diagnosed ?d - value)
+    (weights-initialized)
+    (feedback-received)
+    (diagnosis-correct)
+  )
 
-    diagnosis = unknown
+  (:functions
+    (total-cost)
+    (weight ?m - measurement)
+  )
 
-### PROBABILISTIC RULES ###
-PROBABILISTIC_RULES:
-    P(diagnosis = malignant | radius_mean = high, texture_mean = high) = 0.87
-    P(diagnosis = benign | radius_mean = low, texture_mean = low) = 0.92
-    P(diagnosis = malignant | perimeter_mean = high, compactness_mean = high) = 0.95
-    P(diagnosis = malignant | concavity_mean = high, concave_points_mean = high) = 0.90
-    P(diagnosis = benign | symmetry_mean = low, fractal_dimension_mean = low) = 0.89
+  ;; --- INITIAL WEIGHT GENERATION ---
+  (:action init-weights
+    :parameters ()
+    :precondition (not (weights-initialized))
+    :effect (and
+      (weights-initialized)
+      (assign (weight radius_mean) 1)
+      (assign (weight radius_se) 1)
+      (assign (weight radius_worst) 1)
+      (assign (weight area_mean) 1)
+      (assign (weight area_se) 1)
+      (assign (weight area_worst) 1)
+      (assign (weight perimeter_mean) 1)
+      (assign (weight perimeter_se) 1)
+      (assign (weight perimeter_worst) 1)
+    )
+  )
 
-### ACTIONS (Medical Tests) ###
-ACTIONS:
-    measure_radius_mean:
-        PRECONDITION: (radius_mean = unknown)
-        EFFECT: radius_mean = {low, medium, high}
-        COST: 2
-        REWARD: 5
-        PROBABILITY_UPDATE: P(diagnosis | radius_mean)
+  ;; --- RADIUS TEST ACTION (Cost now multiplied by the weight) ---
+  (:action radius
+    :parameters ()
+    :precondition (and
+      (weights-initialized)
+      (not (test-performed radius_mean))
+      (not (test-performed radius_se))
+      (not (test-performed radius_worst))
+    )
+    :effect (and
+      (test-performed radius_mean)
+      (test-performed radius_se)
+      (test-performed radius_worst)
+      (when (has-value radius_mean high)   (increase (total-cost) (* 3 (weight radius_mean))))
+      (when (has-value radius_mean medium) (increase (total-cost) (* 2 (weight radius_mean))))
+      (when (has-value radius_mean low)    (increase (total-cost) (* 1 (weight radius_mean))))
 
-    measure_texture_mean:
-        PRECONDITION: (texture_mean = unknown)
-        EFFECT: texture_mean = {low, medium, high}
-        COST: 2
-        REWARD: 5
-        PROBABILITY_UPDATE: P(diagnosis | texture_mean)
+      (when (has-value radius_se high)   (increase (total-cost) (* 3 (weight radius_se))))
+      (when (has-value radius_se medium) (increase (total-cost) (* 2 (weight radius_se))))
+      (when (has-value radius_se low)    (increase (total-cost) (* 1 (weight radius_se))))
 
-    measure_perimeter_mean:
-        PRECONDITION: (perimeter_mean = unknown)
-        EFFECT: perimeter_mean = {low, medium, high}
-        COST: 3
-        REWARD: 4
-        PROBABILITY_UPDATE: P(diagnosis | perimeter_mean)
+      (when (has-value radius_worst high)   (increase (total-cost) (* 3 (weight radius_worst))))
+      (when (has-value radius_worst medium) (increase (total-cost) (* 2 (weight radius_worst))))
+      (when (has-value radius_worst low)    (increase (total-cost) (* 1 (weight radius_worst))))
+    )
+  )
 
-    measure_area_mean:
-        PRECONDITION: (area_mean = unknown)
-        EFFECT: area_mean = {low, medium, high}
-        COST: 3
-        REWARD: 4
-        PROBABILITY_UPDATE: P(diagnosis | area_mean)
+  ;; --- AREA TEST ACTION (Using weight) ---
+  (:action area
+    :parameters ()
+    :precondition (and
+      (test-performed radius_mean)
+      (test-performed radius_se)
+      (test-performed radius_worst)
+      (not (test-performed area_mean))
+      (not (test-performed area_se))
+      (not (test-performed area_worst))
+    )
+    :effect (and
+      (test-performed area_mean)
+      (test-performed area_se)
+      (test-performed area_worst)
+      (when (has-value area_mean high)   (increase (total-cost) (* 3 (weight area_mean))))
+      (when (has-value area_mean medium) (increase (total-cost) (* 2 (weight area_mean))))
+      (when (has-value area_mean low)    (increase (total-cost) (* 1 (weight area_mean))))
 
-    measure_smoothness_mean:
-        PRECONDITION: (smoothness_mean = unknown)
-        EFFECT: smoothness_mean = {low, medium, high}
-        COST: 2
-        REWARD: 3
-        PROBABILITY_UPDATE: P(diagnosis | smoothness_mean)
+      (when (has-value area_se high)   (increase (total-cost) (* 3 (weight area_se))))
+      (when (has-value area_se medium) (increase (total-cost) (* 2 (weight area_se))))
+      (when (has-value area_se low)    (increase (total-cost) (* 1 (weight area_se))))
 
-    measure_compactness_mean:
-        PRECONDITION: (compactness_mean = unknown)
-        EFFECT: compactness_mean = {low, medium, high}
-        COST: 3
-        REWARD: 4
-        PROBABILITY_UPDATE: P(diagnosis | compactness_mean)
+      (when (has-value area_worst high)   (increase (total-cost) (* 3 (weight area_worst))))
+      (when (has-value area_worst medium) (increase (total-cost) (* 2 (weight area_worst))))
+      (when (has-value area_worst low)    (increase (total-cost) (* 1 (weight area_worst))))
+    )
+  )
 
-    measure_concavity_mean:
-        PRECONDITION: (concavity_mean = unknown)
-        EFFECT: concavity_mean = {low, medium, high}
-        COST: 3
-        REWARD: 5
-        PROBABILITY_UPDATE: P(diagnosis | concavity_mean)
+  ;; --- PERIMETER TEST ACTION (Using weight) ---
+  (:action perimeter
+    :parameters ()
+    :precondition (and
+      (test-performed radius_mean)
+      (test-performed radius_se)
+      (test-performed radius_worst)
+      (not (test-performed perimeter_mean))
+      (not (test-performed perimeter_se))
+      (not (test-performed perimeter_worst))
+    )
+    :effect (and
+      (test-performed perimeter_mean)
+      (test-performed perimeter_se)
+      (test-performed perimeter_worst)
+      (when (has-value perimeter_mean high)   (increase (total-cost) (* 3 (weight perimeter_mean))))
+      (when (has-value perimeter_mean medium) (increase (total-cost) (* 2 (weight perimeter_mean))))
+      (when (has-value perimeter_mean low)    (increase (total-cost) (* 1 (weight perimeter_mean))))
 
-    measure_concave_points_mean:
-        PRECONDITION: (concave_points_mean = unknown)
-        EFFECT: concave_points_mean = {low, medium, high}
-        COST: 3
-        REWARD: 5
-        PROBABILITY_UPDATE: P(diagnosis | concave_points_mean)
+      (when (has-value perimeter_se high)   (increase (total-cost) (* 3 (weight perimeter_se))))
+      (when (has-value perimeter_se medium) (increase (total-cost) (* 2 (weight perimeter_se))))
+      (when (has-value perimeter_se low)    (increase (total-cost) (* 1 (weight perimeter_se))))
 
-    measure_symmetry_mean:
-        PRECONDITION: (symmetry_mean = unknown)
-        EFFECT: symmetry_mean = {low, medium, high}
-        COST: 2
-        REWARD: 3
-        PROBABILITY_UPDATE: P(diagnosis | symmetry_mean)
+      (when (has-value perimeter_worst high)   (increase (total-cost) (* 3 (weight perimeter_worst))))
+      (when (has-value perimeter_worst medium) (increase (total-cost) (* 2 (weight perimeter_worst))))
+      (when (has-value perimeter_worst low)    (increase (total-cost) (* 1 (weight perimeter_worst))))
+    )
+  )
 
-    measure_fractal_dimension_mean:
-        PRECONDITION: (fractal_dimension_mean = unknown)
-        EFFECT: fractal_dimension_mean = {low, medium, high}
-        COST: 2
-        REWARD: 3
-        PROBABILITY_UPDATE: P(diagnosis | fractal_dimension_mean)
+  ;; --- DIAGNOSIS ACTION ---
+  (:action diagnose
+    :parameters ()
+    :precondition (and
+      (test-performed radius_mean) (test-performed radius_se) (test-performed radius_worst)
+      (test-performed area_mean) (test-performed area_se) (test-performed area_worst)
+      (test-performed perimeter_mean) (test-performed perimeter_se) (test-performed perimeter_worst)
+      (not (diagnosed malignant)) (not (diagnosed benign)) (not (diagnosed uncertain))
+    )
+    :effect (and
+      (when (or 
+             (and (has-value radius_mean high) (has-value radius_se medium))
+             (and (has-value perimeter_mean low) (has-value perimeter_worst high))
+             (>= (total-cost) 21))
+            (diagnosed malignant))
+      (when (or 
+             (and (has-value radius_mean low) (has-value radius_se high))
+             (and (has-value perimeter_mean low) (has-value perimeter_worst low))
+             (<= (total-cost) 15))
+            (diagnosed benign))
+      (when (and (> (total-cost) 15) (< (total-cost) 21))
+            (diagnosed uncertain))
+      (when (and (not (diagnosed malignant)) (not (diagnosed benign)) (not (diagnosed uncertain)))
+            (diagnosed uncertain))
+    )
+  )
 
-### PLANNING ALGORITHM ###
-PLANNING_ALGORITHM:
-    forward_chain_A_star:
-        heuristic = "Expected Information Gain"
-        cost_function = "Minimize Total Cost"
-        goal = "maximize P(diagnosis = malignant) OR P(diagnosis = benign) > 0.95"
+  ;; --- GET FEEDBACK FROM THE BNN MODEL ---
+  (:action get-feedback
+    :parameters ()
+    :precondition (or (diagnosed malignant) (diagnosed benign) (diagnosed uncertain))
+    :effect (feedback-received)
+  )
 
-### EXECUTION PIPELINE ###
-EXECUTION_PIPELINE:
-    - Classical planner generates optimal action sequence.
-    - Executioner performs tests in sequence.
-    - PL-DNN observer updates probabilities after each test.
-    - If probability threshold reached, conclude diagnosis.
-    - Otherwise, re-plan and continue testing.
+  ;; --- UPDATE WEIGHTS BASED ON BNN FEEDBACK ---
+  (:action update-weights
+    :parameters (?m - measurement ?delta - number)
+    :precondition (feedback-received)
+    :effect (increase (weight ?m) ?delta)
+  )
 
-### GOAL STATE ###
-GOAL_STATE:
-    diagnosis = malignant OR diagnosis = benign
+  ;; --- CHECK IF THE DIAGNOSIS IS CORRECT (Simulated BNN check) ---
+  (:action check-diagnosis
+    :parameters ()
+    :precondition (feedback-received)
+    :effect (when (>= (total-cost) 20) (diagnosis-correct))
+  )
+)
