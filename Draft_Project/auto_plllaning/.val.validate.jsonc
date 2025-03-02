@@ -1,0 +1,9 @@
+// Solver arguments for VAL: The plan validation system /validate
+{
+	// plan to validate
+	// "plan": "init-weights , radius_hhl, area_hhl, diagnose ",
+	"0":"init-weights",
+	"1":"radius_hhl",
+	"2":"area_hhl",
+	"3":"diagnose"
+}
