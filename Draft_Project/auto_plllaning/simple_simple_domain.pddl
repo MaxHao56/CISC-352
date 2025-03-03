@@ -3327,8 +3327,6 @@
     :effect (diagnosed)
   )
 
-
-
   (:action diagnose_2
     :parameters ()
     :precondition ( and (or
@@ -3337,8 +3335,6 @@
         (test-performed compactness_se)
         (test-performed compactness_worst)
       )
-
-
     )
       (not (diagnosed)))
     :effect (diagnosed)
