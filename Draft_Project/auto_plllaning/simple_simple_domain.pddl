@@ -5,6 +5,8 @@
     :negative-preconditions
     :equality
     :action-costs
+    :disjunctive-preconditions
+    :conditional-effects
   )
 
   (:types 
@@ -3306,18 +3308,56 @@
 ;; --- Diagnosis Action ---
   (:action diagnose
     :parameters ()
-    :precondition (and
-      (test-performed radius_mean) 
-      (test-performed radius_se) 
-      (test-performed radius_worst)
-      (test-performed area_mean) 
-      (test-performed area_se) 
-      (test-performed area_worst)
-      ; Optionally, if you want perimeter tests to be required:
-      ; (test-performed perimeter_mean) 
-      ; (test-performed perimeter_se) 
-      ; (test-performed perimeter_worst)
+    :precondition ( and (or
+      (and
+        (test-performed perimeter_mean)
+        (test-performed perimeter_se)
+        (test-performed perimeter_worst)
+
+        (test-performed area_mean)
+        (test-performed area_se)
+        (test-performed area_worst)
+        
+        (test-performed compactness_mean)
+        (test-performed compactness_mean)
+        (test-performed compactness_mean)
+      )
+    )
       (not (diagnosed)))
     :effect (diagnosed)
   )
+
+
+
+  (:action diagnose_2
+    :parameters ()
+    :precondition ( and (or
+      (and
+        (test-performed compactness_mean)
+        (test-performed compactness_se)
+        (test-performed compactness_worst)
+      )
+
+
+    )
+      (not (diagnosed)))
+    :effect (diagnosed)
+  )
+
+
+
+
+
+
+
+
+
+
+
+
 )
+
+
+
+
+

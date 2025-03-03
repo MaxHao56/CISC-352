@@ -7,6 +7,15 @@
     (not (test-performed radius_mean))
     (not (test-performed radius_se))
     (not (test-performed radius_worst))
+    (not (test-performed area_mean))
+    (not (test-performed area_se))
+    (not (test-performed area_worst))
+    (not (test-performed perimeter_mean))
+    (not (test-performed perimeter_se))
+    (not (test-performed perimeter_worst))
+    (not (test-performed compactness_mean))
+    (not (test-performed compactness_se))
+    (not (test-performed compactness_worst))
     (has-value radius_mean high)
     (has-value radius_se high)
     (has-value radius_worst low)
@@ -16,8 +25,9 @@
     (has-value perimeter_mean low)
     (has-value perimeter_se low)
     (has-value perimeter_worst low)
-
-    
+    (has-value compactness_mean low)
+    (has-value compactness_se low)
+    (has-value compactness_worst low)
   )
   (:goal
     (diagnosed)
