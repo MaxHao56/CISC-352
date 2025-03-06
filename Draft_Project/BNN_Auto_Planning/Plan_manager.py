@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-PDDL_FILE_PATH = "problem.pddl"  # Path to your PDDL file
-SECTION_TO_COMMENT = "; START COMMENT SECTION"  # Marker to find section
+PDDL_FILE_PATH = "problem.pddl"  
+SECTION_TO_COMMENT = "; commenting input "
 
 
 def modify_pddl_file(input_value):
