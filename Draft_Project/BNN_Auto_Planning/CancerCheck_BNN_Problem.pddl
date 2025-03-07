@@ -1,5 +1,5 @@
-(define (problem simple_simple_problem)
-  (:domain CancerCheck_BNN_3)
+(define (problem CancerCheck_BNN_Problem)
+  (:domain CancerCheck_BNN)
   (:init
     (= (total-cost) 0)
     (not (weights-initialized))

@@ -1,4 +1,4 @@
-(define (domain CancerCheck_BNN_3)
+(define (domain CancerCheck_BNN)
   (:requirements
     :strips
     :typing
