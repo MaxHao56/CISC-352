@@ -45,11 +45,11 @@ def run_plan_manager(actions, data_file):
         results[plan_key] = {}
 
         for i, feature_list in enumerate(feature_sets):
-            print(f"\n  ➤ Feature Set {i+1}: {feature_list}")
+            print(f"\n   Feature Set {i+1}: {feature_list}")
 
             available_features = [feat for feat in feature_list if feat in df.columns]
             if not available_features:
-                print(f"    ✖ No valid features found. Skipping.")
+                print(f"     No valid features found. Skipping.")
                 continue
 
             selected_cols = available_features + ['diagnosis']
@@ -103,7 +103,7 @@ def run_plan_manager(actions, data_file):
                     "recommendation": recommendation
                 })
 
-            print(f"    ➤ Total patients recommended to go to hospital: {go_count} / 25")
+            print(f"     Total patients recommended to go to hospital: {go_count} / 25")
 
             test_accuracy = evaluate_model(model, X_test_tensor, y_test_tensor, n_samples=100, threshold=0.5)
 
