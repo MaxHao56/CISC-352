@@ -7,10 +7,11 @@ import torch.nn.functional as F
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 
+
 ######################
 # DATA LOADING & PREPROCESSING
 ######################
-file_path = "C:/Users/maxha/OneDrive/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
 df = pd.read_csv(file_path)
 
 # Remove unnecessary columns if present
@@ -119,11 +120,11 @@ def predict_patient(model, patient_vector, n_samples=100):
 print("Training the α-Divergence based Bayesian NN...")
 bnn_alpha = BNN_Alpha(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
 bnn_alpha = train_model(bnn_alpha, nn.BCELoss(), X_train_tensor, y_train_tensor,
-                        epochs=200, lr=0.01, beta=0.01, reg_fn=lambda: bnn_alpha.alpha_div(alpha=0.5))
+                        epochs=200, lr=0.1, beta=0.01, reg_fn=lambda: bnn_alpha.alpha_div(alpha=0.5))
 
 # Example: Use a single patient from the test set.
 # Ensure that the patient vector is preprocessed the same way as the training data.
-patient_example = X_test[0]  # This is a numpy array for one patient.
+patient_example = X_test[10]  # This is a numpy array for one patient.
 chance, uncertainty = predict_patient(bnn_alpha, patient_example, n_samples=100)
 
 print("Chance of Cancer: {:.2f}%".format(chance * 100))

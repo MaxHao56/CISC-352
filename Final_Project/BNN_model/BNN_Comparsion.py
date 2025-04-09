@@ -16,7 +16,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc, pr
 ######################
 # DATA LOADING & PREPROCESSING
 ######################
-file_path = "C:/Users/maxha/OneDrive/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
 df = pd.read_csv(file_path)
 
 
@@ -260,7 +260,7 @@ evaluate_model(bnn_kl, X_test_tensor, y_test_np, n_samples=100, stochastic=True)
 print("\nTraining BNN_Alpha...")
 bnn_alpha = BNN_Alpha(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
 bnn_alpha = train_model(bnn_alpha, nn.BCELoss(), X_train_tensor, y_train_tensor, 
-                        epochs=200, lr=0.01, beta=0.01, reg_fn=lambda: bnn_alpha.alpha_div(alpha=0.5))
+                        epochs=200, lr=0.1, beta=0.01, reg_fn=lambda: bnn_alpha.alpha_div(alpha=0.5))
 print("Evaluating BNN_Alpha:")
 evaluate_model(bnn_alpha, X_test_tensor, y_test_np, n_samples=100, stochastic=True)
 
