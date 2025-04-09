@@ -14,6 +14,7 @@ This vivually demonstartes the difference and impact each distribution method us
 
 
 the loss function is also another thing was improved from the draft project. 
+you can go ahead into main function by commenting out the existing section and uncomment to switch the evaluvation in optimzers and learning rates
 
 with 0.01 learning rate
 ![alt text](image-3.png) 

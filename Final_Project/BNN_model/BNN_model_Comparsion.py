@@ -252,10 +252,10 @@ print("Evaluating MC Dropout NN:")
 evaluate_model(mc_model, X_test_tensor, y_test_np, n_samples=100, stochastic=True)
 
 
-# ---- 4. Deterministic Simple Neural Network ----
-print("\nTraining Simple NN...")
-simple_nn = SimpleNN(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
-simple_nn = train_model(simple_nn, nn.BCELoss(), X_train_tensor, y_train_tensor, 
-                        epochs=200, lr=0.1)
-print("Evaluating Simple NN (Deterministic):")
-evaluate_model(simple_nn, X_test_tensor, y_test_np, n_samples=1, stochastic=False)
+# # ---- 4. Deterministic Simple Neural Network ----
+# print("\nTraining Simple NN...")
+# simple_nn = SimpleNN(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
+# simple_nn = train_model(simple_nn, nn.BCELoss(), X_train_tensor, y_train_tensor, 
+#                         epochs=200, lr=0.1)
+# print("Evaluating Simple NN (Deterministic):")
+# evaluate_model(simple_nn, X_test_tensor, y_test_np, n_samples=1, stochastic=False)
