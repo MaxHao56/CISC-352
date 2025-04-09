@@ -3,12 +3,16 @@ import re
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
+
 #######################
 # 1. DATA LOADING AND PREPROCESSING
 #######################
 
 # Define file path for the data CSV
-file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+file_path = CANCER_DATA_FILE
 
 # Check if the data file exists
 if not os.path.exists(file_path):

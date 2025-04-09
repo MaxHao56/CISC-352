@@ -6,6 +6,10 @@ import torch.nn as nn
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
+
 ######################
 # IMPORT THE BNN API FROM THE ACTUAL BNN_MODEL.PY FILE
 ######################
@@ -157,7 +161,7 @@ def run_plan_manager(csv_file_path):
 # MAIN EXECUTION
 ######################
 if __name__ == '__main__':
-    data_csv_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+    data_csv_path = CANCER_DATA_FILE
     results = run_plan_manager(data_csv_path)
     if results is not None:
         print("\nFinal Results:")

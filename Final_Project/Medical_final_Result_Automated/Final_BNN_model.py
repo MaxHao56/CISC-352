@@ -6,13 +6,17 @@ import torch.optim as optim
 import torch.nn.functional as F
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))) 
+from env import CANCER_DATA_FILE
 
 
 ######################
 # DATA LOADING & PREPROCESSING
 ######################
 file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
-df = pd.read_csv(file_path)
+df = pd.read_csv(CANCER_DATA_FILE)
 
 # Remove unnecessary columns if present
 df.drop(columns=['id'], inplace=True, errors='ignore')

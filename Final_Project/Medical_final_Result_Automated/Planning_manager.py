@@ -6,6 +6,10 @@ import torch.nn as nn
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 from sklearn.model_selection import train_test_split
 
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
+
 # Import the Bayesian Neural Network components from your BNN file.
 from Final_BNN_model import BNN_Alpha, train_model, predict_patient
 
@@ -117,8 +121,8 @@ def run_plan_manager(actions, data_file):
 
 
 if __name__ == "__main__":
-    domain_file = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_domain.pddl"
-    data_file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+    domain_file = PLANNING_DOMAIN_DIR
+    data_file_path = CANCER_DATA_FILE
     
     actions = load_pddl_actions(domain_file)
     print("Extracted actions from planning extension:")

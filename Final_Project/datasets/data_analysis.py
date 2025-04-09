@@ -4,11 +4,15 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
  
 
 
 # making sure dataset is imported by adpating to other computers
-file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+file_path = CANCER_DATA_FILE
 
 df = pd.read_csv(file_path)
 

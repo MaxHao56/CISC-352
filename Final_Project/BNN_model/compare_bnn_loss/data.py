@@ -2,9 +2,13 @@ import pandas as pd
 import torch
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 from sklearn.model_selection import train_test_split
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),'..','..')))
+from env import *
 
 def load_data():
-    file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+    file_path = CANCER_DATA_FILE
     df = pd.read_csv(file_path)
 
     df.drop(columns=['id', 'Unnamed: 32'], inplace=True, errors='ignore')

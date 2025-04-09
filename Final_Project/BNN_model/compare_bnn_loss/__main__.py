@@ -46,6 +46,7 @@ from evaluate import evaluate_model
 from visualize import plot_multiple_losses
 import torch.nn as nn
 
+
 def main():
     X_train, X_test, y_train, y_test = load_data()
 

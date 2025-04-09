@@ -3,6 +3,9 @@ from sklearn.preprocessing import KBinsDiscretizer
 import os
 import re
 import shutil
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
 
 def categorize_patient_data(patient_csv_file, bins=3, strategy='quantile', patient_index=0):
     """
@@ -89,9 +92,9 @@ def update_pddl_file(input_file_path, output_file_path, new_block_lines):
 
 if __name__ == "__main__":
     # File paths (adjust these paths as needed)
-    data_csv_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
-    template_pddl_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_Problem.pddl"
-    output_pddl_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_Problem1.pddl" # the format is little weired but it works
+    data_csv_path = CANCER_DATA_FILE
+    template_pddl_path = PLANNING_PROBLEM_FILE
+    output_pddl_path = PLANNING_PROBLEM_OUTPUT_DIR # the format is little weired but it works
     
     # Optionally, er make a copy of the template file to the output file before modifying
     shutil.copy(template_pddl_path, output_pddl_path)

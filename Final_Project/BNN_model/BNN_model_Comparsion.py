@@ -8,6 +8,10 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc, precision_recall_curve
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from env import *
 
 
 
@@ -16,7 +20,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, roc_curve, auc, pr
 ######################
 # DATA LOADING & PREPROCESSING
 ######################
-file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+file_path = CANCER_DATA_FILE
 df = pd.read_csv(file_path)
 
 
