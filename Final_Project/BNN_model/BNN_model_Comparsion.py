@@ -211,28 +211,6 @@ def evaluate_model(model, X_test, y_test, n_samples=100, stochastic=True):
     plt.legend()
     plt.show()
     
-    # ROC Curve
-    fpr, tpr, _ = roc_curve(y_test, mean_preds)
-    roc_auc = auc(fpr, tpr)
-    plt.figure(figsize=(8, 6))
-    plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {roc_auc:.2f})")
-    plt.plot([0, 1], [0, 1], 'k--')
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
-    plt.title("ROC Curve")
-    plt.legend(loc="lower right")
-    plt.show()
-    
-    # Precision-Recall Curve
-    precision, recall, _ = precision_recall_curve(y_test, mean_preds)
-    plt.figure(figsize=(8, 6))
-    plt.plot(recall, precision, label="Precision-Recall Curve")
-    plt.xlabel("Recall")
-    plt.ylabel("Precision")
-    plt.title("Precision-Recall Curve")
-    plt.legend(loc="best")
-    plt.show()
-    
     # Histogram of mean predictions
     plt.figure(figsize=(8, 6))
     plt.hist(mean_preds, bins=20, alpha=0.7, edgecolor='black')
@@ -251,7 +229,7 @@ y_test_np = y_test_tensor.squeeze().detach().cpu().numpy()
 print("Training BNN_KL...")
 bnn_kl = BNN_KL(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
 bnn_kl = train_model(bnn_kl, nn.BCELoss(), X_train_tensor, y_train_tensor, 
-                     epochs=200, lr=0.01, beta=0.01, reg_fn=bnn_kl.kl_divergence)
+                     epochs=200, lr=0.1, beta=0.01, reg_fn=bnn_kl.kl_divergence)
 print("Evaluating BNN_KL:")
 evaluate_model(bnn_kl, X_test_tensor, y_test_np, n_samples=100, stochastic=True)
 
@@ -269,7 +247,7 @@ evaluate_model(bnn_alpha, X_test_tensor, y_test_np, n_samples=100, stochastic=Tr
 print("\nTraining MC Dropout NN...")
 mc_model = MCDropoutNN(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1, p=0.5)
 mc_model = train_model(mc_model, nn.BCELoss(), X_train_tensor, y_train_tensor, 
-                       epochs=200, lr=0.01)
+                       epochs=200, lr=0.1)
 print("Evaluating MC Dropout NN:")
 evaluate_model(mc_model, X_test_tensor, y_test_np, n_samples=100, stochastic=True)
 
@@ -278,6 +256,6 @@ evaluate_model(mc_model, X_test_tensor, y_test_np, n_samples=100, stochastic=Tru
 print("\nTraining Simple NN...")
 simple_nn = SimpleNN(input_dim=X_train_tensor.shape[1], hidden_dim=20, output_dim=1)
 simple_nn = train_model(simple_nn, nn.BCELoss(), X_train_tensor, y_train_tensor, 
-                        epochs=200, lr=0.01)
+                        epochs=200, lr=0.1)
 print("Evaluating Simple NN (Deterministic):")
 evaluate_model(simple_nn, X_test_tensor, y_test_np, n_samples=1, stochastic=False)

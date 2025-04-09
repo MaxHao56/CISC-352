@@ -19,3 +19,21 @@ with 0.01 learning rate
 ![alt text](image-3.png) 
 with 0.1 learning rate
 ![alt text](image-4.png)
+
+This is with different optimzers
+![alt text](image-5.png)
+
+
+
+And lastly the model comaprsions
+KL = 
+![alt text](image-16.png)
+![alt text](image-17.png)
+
+Alpha = 
+![alt text](image-18.png)
+![alt text](image-19.png)
+
+McDropOut = 
+![alt text](image-20.png)
+![alt text](image-21.png)
