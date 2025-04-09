@@ -85,7 +85,7 @@ def update_pddl_file(input_file_path, output_file_path, new_block_lines):
     with open(output_file_path, 'w') as f:
         f.writelines(updated_lines)
     
-    print(f"✅ Updated file written to: {output_file_path}")
+    print(f" Updated file written to: {output_file_path}")
 
 if __name__ == "__main__":
     # File paths (adjust these paths as needed)
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     template_pddl_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_Problem.pddl"
     output_pddl_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_Problem1.pddl" # the format is little weired but it works
     
-    # Optionally, make a copy of the template file to the output file before modifying
+    # Optionally, er make a copy of the template file to the output file before modifying
     shutil.copy(template_pddl_path, output_pddl_path)
     
     # Generate the new block of "has-value" predicates from the chosen patient's data

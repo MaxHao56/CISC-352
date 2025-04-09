@@ -6,15 +6,15 @@ import torch.nn as nn
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import PowerTransformer, LabelEncoder
 
-# ------------------------------
+######################
 # IMPORT THE BNN API FROM THE ACTUAL BNN_MODEL.PY FILE
-# ------------------------------
-# Ensure that 'BNN_model.py' is in your project directory or in your Python path.
+######################
+
 from FInal_BNN_Manual import BNN_Alpha, train_model, predict_patient
 
-# ------------------------------
+######################
 # DATA LOADING & PREPROCESSING
-# ------------------------------
+######################
 def load_data(csv_file_path):
     """
     Loads the cancer data CSV, drops extraneous columns,
@@ -29,9 +29,9 @@ def load_data(csv_file_path):
     df['diagnosis'] = LabelEncoder().fit_transform(df['diagnosis'])
     return df
 
-# ------------------------------
+######################
 # INTERACTIVE PLAN MANAGER FUNCTION
-# ------------------------------
+######################
 def run_plan_manager(csv_file_path):
     """
     This function does the following:

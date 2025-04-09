@@ -79,7 +79,7 @@ class BNN_Alpha(nn.Module):
 ######################
 # TRAINING FUNCTION
 ######################
-def train_model(model, loss_fn, X, y, epochs=200, lr=0.01, beta=0.01, reg_fn=None):
+def train_model(model, loss_fn, X, y, epochs=200, lr=0.1, beta=0.01, reg_fn=None):
     optimizer = optim.Adam(model.parameters(), lr=lr)
     for epoch in range(epochs):
         model.train()

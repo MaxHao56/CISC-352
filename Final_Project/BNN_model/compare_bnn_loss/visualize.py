@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 #     plt.show()
 
 
-
+## This plots the different loss curves using different optimizers
 def plot_multiple_losses(loss_dict, title="Loss Comparison"):
     plt.figure(figsize=(10, 6))
     for label, losses in loss_dict.items():

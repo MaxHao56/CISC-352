@@ -4,19 +4,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
-from google.colab import files
  
 
 
 # making sure dataset is imported by adpating to other computers
-file_path = "/mnt/data/cisc_352_dataaset.csv"
-try:
-    df = pd.read_csv(file_path)
-except FileNotFoundError:
-    print("Dataset not found. Please upload your CSV file.")
-    uploaded = files.upload()
-    file_path = list(uploaded.keys())[0]
-    df = pd.read_csv(file_path)
+file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
+
+df = pd.read_csv(file_path)
 
 # Drop unnecessary columns and encode diagnosis labels
 df.drop(columns=['id', 'Unnamed: 32'], inplace=True, errors='ignore')

@@ -3,9 +3,9 @@ import re
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-# ------------------------------
-# 1. Data Loading and Preprocessing
-# ------------------------------
+#######################
+# 1. DATA LOADING AND PREPROCESSING
+#######################
 
 # Define file path for the data CSV
 file_path = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/datasets/Cancer_Data.csv"
@@ -46,9 +46,9 @@ for col in classified_df.columns[1:]:
 # Uncomment the next line to view the classified DataFrame
 # print(classified_df.head())
 
-# ------------------------------
-# 2. PDDL Actions Loader Function
-# ------------------------------
+#######################
+# 2. PDDL ACTIONS LOADER FUNCTION
+#######################
 
 def load_pddl_actions(pddl_file_path):
     """
@@ -97,9 +97,9 @@ def load_pddl_actions(pddl_file_path):
     return actions
 
 
-# ------------------------------
-# 3. Example Usage
-# ------------------------------
+#######################
+# 3. EXAMPLE USEAGES
+#######################
 
 # Taking the first 25 rows of the data for further processing (if needed)
 df_patients = df.head(25)
@@ -108,7 +108,7 @@ accuracy = 0.0
 prediction = 999
 
 # Define the domain file path for the PDDL file
-domain_file = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_domain.pddl"
+domain_file = "C:/Users/unabn/Documents/GitHub/CISC-352/Final_Project/BNN_Auto_Planning/CancerCheck_BNN_domain.pddl" ## Change this path or you local path on your computer 
 
 # Load the actions from the PDDL domain file into a dictionary
 actions = load_pddl_actions(domain_file)

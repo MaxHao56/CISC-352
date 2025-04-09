@@ -18,7 +18,6 @@
 #     return model, losses
 
 
-
 def train_model(model, loss_fn, X, y, epochs=200, lr=0.1, beta=0.01, reg_fn=None, optimizer_class=None):
     optimizer = optimizer_class(model.parameters(), lr=lr)
     losses = []
