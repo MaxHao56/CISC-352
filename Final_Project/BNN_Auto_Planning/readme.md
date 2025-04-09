@@ -8,3 +8,7 @@
 
 ### to minic feedback system(automated pipeline which not yet implemented but to check the logistic of the code please find plan_manager.py) then comment or uncommment different diagnose actions
 
+![alt text](problem_view2.png)
+![alt text](problem_view.png)
+![alt text](plan_generated.png)
+
